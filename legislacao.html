@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constituição de 2025 — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background-color: #f4f7f6; }
+        .documento-wrapper {
+            background: #ffffff;
+            padding: 60px 80px;
+            max-width: 1000px;
+            margin: 40px auto;
+            border: 1px solid #d1d5db;
+            font-family: 'Lora', serif;
+            line-height: 1.8;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            color: #1a1a1a;
+        }
+        .doc-header { text-align: center; margin-bottom: 50px; border-bottom: 2px solid var(--ouro); padding-bottom: 20px; }
+        .doc-header h2 { font-family: 'Montserrat'; font-weight: 800; color: var(--azul); margin-bottom: 5px; }
+        .doc-header p { font-size: 0.9rem; font-weight: 700; color: #666; }
+        
+        .preambulo-box { font-style: italic; text-align: justify; margin-bottom: 40px; padding: 25px; background: #f9fafb; border-left: 5px solid var(--ouro); }
+        
+        .titulo-secao { font-family: 'Montserrat'; text-align: center; margin: 50px 0 30px; text-transform: uppercase; font-size: 1.1rem; color: var(--azul); font-weight: 800; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .subtitulo-secao { text-align: center; font-size: 0.9rem; font-weight: 700; color: #4b5563; margin-top: -25px; margin-bottom: 30px; }
+
+        .artigo { margin: 20px 0; text-align: justify; }
+        .artigo b { color: #000; }
+        .inciso { display: block; margin-left: 50px; margin-top: 5px; }
+        .paragrafo { display: block; margin-left: 40px; margin-top: 8px; font-weight: 400; }
+        
+        .assinaturas-final { margin-top: 80px; padding-top: 40px; border-top: 1px solid #cbd5e1; text-align: center; }
+        .bloco-ass { margin-bottom: 45px; }
+        .nome-ass { font-weight: 700; text-decoration: underline; font-size: 1.2rem; display: block; font-style: italic; }
+        .cargo-ass { font-family: 'Montserrat'; font-weight: 800; font-size: 0.75rem; color: #000; text-transform: uppercase; margin-top: 5px; }
+
+        @media (max-width: 768px) { .documento-wrapper { padding: 30px 20px; } }
+    /* Contentor com comportamento de tudo ou nada */
+    .nav-leis {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas por padrão */
+        gap: 20px;
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 0 25px;
+    }
+
+    .btn-lei {
+        padding: 20px 15px;
+        border: 2px solid #e2e8f0;
+        background: #ffffff;
+        color: #0a2e52;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70px;
+    }
+
+    .btn-lei:hover {
+        transform: translateY(-5px);
+        border-color: #d4af37;
+        box-shadow: 0 10px 20px rgba(10, 46, 82, 0.1);
+    }
+
+    .btn-lei.active {
+        background: #0a2e52;
+        color: #ffffff;
+        border-color: #0a2e52;
+        box-shadow: 0 8px 25px rgba(10, 46, 82, 0.3);
+    }
+
+    /* QUEBRA PARA UM EMBAIXO DO OUTRO */
+    @media (max-width: 850px) {
+        .nav-leis {
+            grid-template-columns: 1fr; /* Força uma única coluna */
+            max-width: 450px; /* Evita que o botão fique largo demais */
+        }
+    }
+
+    /* Estilo do conteúdo (mesmo anterior) */
+    .const-content { display: none; animation: fadeIn 0.5s ease; }
+    .const-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .doc-page { background: #fff; padding: 60px; max-width: 900px; margin: 40px auto; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); font-family: 'Lora', serif; }
+    </style>
+</head>
+<body>
+
+    <header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="simbolos.html">SÍMBOLOS</a>
+            <a href="territorio.html">TERRITÓRIO</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+        </nav>
+    </div>
+</header>
+
+<script>
+function trocarConstituicao(evt, idAlvo) {
+    // 1. Esconder todos os blocos de texto
+    const blocos = document.querySelectorAll('.const-content');
+    blocos.forEach(bloco => bloco.classList.remove('active'));
+
+    // 2. Remover o estado "active" de todos os botões
+    const botoes = document.querySelectorAll('.btn-lei');
+    botoes.forEach(btn => btn.classList.remove('active'));
+
+    // 3. Mostrar o bloco clicado e ativar o botão correspondente
+    document.getElementById(idAlvo).classList.add('active');
+    evt.currentTarget.classList.add('active');
+}
+</script>
+
+</style>
+
+<nav class="nav-leis">
+    <button class="btn-lei active" onclick="abrirConst(event, 'doc2025')">Constituição de 2025</button>
+    <button class="btn-lei" onclick="abrirConst(event, 'doc1979')">Constituição de 1979</button>
+    <button class="btn-lei" onclick="abrirConst(event, 'doc1935')">Constituição de 1935</button>
+</nav>
+
+<div id="doc2025" class="const-content active">
+    <article class="doc-page">
+        <h2 style="text-align: center; color: #0a2e52; font-family: 'Montserrat'; font-size: 1.5rem;">CONSTITUIÇÃO FEDERAL DE 2025</h2>
+        <p style="text-align: center; font-weight: bold; color: #d4af37; font-size: 0.9rem;">ASSINADA EM 12 DE JANEIRO DE 2025</p>
+        <hr style="border: 0; border-top: 2px solid #d4af37; width: 50px; margin: 25px auto;">
+        
+        <p><div class="preambulo-box">
+            Nós, representantes da população guianense, reunidos em nome da democracia, da justiça e do bem-estar social, instituímos esta Constituição para assegurar os direitos fundamentais, promover a união entre os Estados e estabelecer as bases para uma sociedade justa e solidária.
+        </div>
+
+        <h3 class="titulo-secao">Título I</h3>
+        <p class="subtitulo-secao">Dos Princípios Fundamentais</p>
+
+        <p class="artigo"><b>Art. 1º.</b> A Federação das Guianas é formada pela união indissolúvel dos Estados, dos Distritos Estaduais e do Distrito Federal, constituindo-se em um Estado Democrático de Direito, baseado na soberania, cidadania, dignidade da pessoa humana e nos valores sociais do trabalho e da livre iniciativa.</p>
+        <p class="paragrafo"><b>Parágrafo único:</b> Todo poder emana do povo, que o exerce por meio de representantes eleitos ou diretamente, nos termos desta Constituição.</p>
+
+        <p class="artigo"><b>Art. 2º.</b> São símbolos nacionais da Federação das Guianas:<br>
+            <span class="inciso">I - a Bandeira Nacional;</span>
+            <span class="inciso">II - o Hino Nacional;</span>
+            <span class="inciso">III - o Brasão de Armas;</span>
+            <span class="inciso">IV - o Lema Nacional;</span>
+            <span class="inciso">V - o Selo Nacional;</span>
+            <span class="inciso">VI - a Guilerma.</span>
+        </p>
+
+        <h3 class="titulo-secao">Título II</h3>
+        <p class="subtitulo-secao">Dos Direitos e Garantias Fundamentais</p>
+
+        <p class="artigo"><b>Art. 3º.</b> Todos são iguais perante a lei, sem distinção de qualquer natureza, garantindo-se aos cidadãos a inviolabilidade do direito à vida, à liberdade, à igualdade, à segurança e à propriedade.</p>
+
+        <p class="artigo"><b>Art. 4º.</b> Os direitos fundamentais abrangem:<br>
+            <span class="inciso">I - o direito à saúde;</span>
+            <span class="inciso">II - o direito à educação;</span>
+            <span class="inciso">III - o direito à segurança;</span>
+            <span class="inciso">IV - o direito à moradia;</span>
+            <span class="inciso">V - a liberdade de expressão, crença, associação e pensamento;</span>
+            <span class="inciso">VI - o acesso à justiça e à ampla defesa;</span>
+            <span class="inciso">VII - o respeito à diversidade étnica, cultural e religiosa.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 5º.</b> É dever do Estado promover:<br>
+            <span class="inciso">I - a erradicação da pobreza e a redução das desigualdades sociais;</span>
+            <span class="inciso">II - o desenvolvimento sustentável, respeitando o meio ambiente;</span>
+            <span class="inciso">III - o pleno emprego e a valorização do trabalho humano.</span>
+        </p>
+
+        <h3 class="titulo-secao">Título III</h3>
+        <p class="subtitulo-secao">Da Organização do Estado</p>
+
+        <p class="artigo"><b>Art. 6º.</b> A Federação das Guianas organiza-se em estados autônomos, distritos estaduais e no Distrito Federal, respeitados os limites desta Constituição.</p>
+
+        <p class="artigo"><b>Art. 7º.</b> São estados da Federação das Guianas:<br>
+            <span class="inciso">I - Guiana;<br> II - Suriname;<br> III - Oiapoque;<br> IV - Bolívar;<br> V - Amazonas;<br> VI - Delta Amacuro;<br> VII - Rio Branco;<br> VIII - Amapá;<br> IX - Trombetas;<br> X - Guayana.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 8º.</b> São distritos estaduais da Federação das Guianas:<br>
+            <span class="inciso">I - Trindade;<br> II - Tobago;<br> III - Triângulo do Tigri.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 9º.</b> A capital federal é Porto Courantyne, localizada na Ilha Baboon, território correspondente ao Distrito Federal.</p>
+        <p class="paragrafo"><b>Parágrafo único:</b> O Distrito Federal terá autonomia administrativa e política, exercendo funções executivas, legislativas e judiciais conforme regulamentado por esta Constituição e legislação complementar.</p>
+
+        <h3 class="titulo-secao">Título IV</h3>
+        <p class="subtitulo-secao">Dos Poderes da União</p>
+
+        <p class="artigo"><b>Art. 10.</b> A União, na forma desta Constituição, organiza-se em três poderes independentes e harmônicos entre si: o Poder Executivo, o Poder Legislativo (Parlamento) e o Poder Judiciário, sendo cada um dotado de autonomia para exercer suas funções e responsabilidades.</p>
+
+        <p class="artigo"><b>Art. 11.</b> O Poder Executivo é exercido pelo Presidente da República e pelo Primeiro-Ministro.</p>
+        <p class="paragrafo"><b>§1º.</b> O Presidente da República é chefe de Estado, eleito por voto direto, maioria absoluta, para mandato de 4 anos, permitida uma reeleição.</p>
+        <p class="paragrafo"><b>§2º.</b> O Primeiro-Ministro é chefe de Governo, indicado pelo Presidente para mandato de 4 anos, não permitida reindicação, devendo ter a confiança do Parlamento para governar.</p>
+        <p class="paragrafo"><b>§3º.</b> O Presidente nomeará ministros, a pedido do Primeiro-Ministro e outros responsáveis, conforme a necessidade da administração pública.</p>
+
+        <p class="artigo"><b>Art. 12.</b> O Poder Legislativo é exercido pelo Parlamento, composto por três casas descritas no Título V desta Constituição.</p>
+        <p class="paragrafo"><b>§1º.</b> O Parlamento legisla sobre matérias da União, fiscaliza o Executivo e aprova o orçamento anual.</p>
+        <p class="paragrafo"><b>§2º.</b> O Parlamento representa o povo, assegurando autonomia dos estados e distritos.</p>
+
+        <p class="artigo"><b>Art. 13.</b> O Poder Judiciário é independente e garantidor dos direitos e liberdades constitucionais. A justiça será exercida pelos tribunais federais.</p>
+        <p class="paragrafo"><b>§1º.</b> A Alta Corte Federal é o órgão máximo do Judiciário.</p>
+        <p class="paragrafo"><b>§2º.</b> O Judiciário assegura o cumprimento da Constituição e das leis.</p>
+
+        <h3 class="titulo-secao">Título V</h3>
+        <p class="subtitulo-secao">Do Poder Legislativo</p>
+
+        <p class="artigo"><b>Art. 14.</b> O Parlamento da Federação das Guianas é composto por três casas legislativas:<br>
+            <span class="inciso">I - Casa Baixa (Meldris)</span>
+            <span class="inciso">II - Casa Média (Alvaris)</span>
+            <span class="inciso">III - Casa Alta (Zindas)</span>
+            <span class="paragrafo"><b>Paragráfo Único:</b> Estas casas exercem o poder legislativo, representando o povo e os estados.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 15.</b> Atribuições das casas:<br>
+            <span class="inciso">I - Casa Baixa (Meldris): 150 cadeiras, legisla, fiscaliza e representa proporcionalmente à população;</span>
+            <span class="inciso">II - Casa Média (Alvaris): 56 cadeiras, revisa leis e equilibra interesses geográficos e estratégicos;</span>
+            <span class="inciso">III - Casa Alta (Zindas): 28 cadeiras, revisa decisões das outras casas e aprova reformas constitucionais.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 15-A.</b> Proporcional à população dos Estados, dos Distritos Estaduais e do Distrito Federal, o número de membros da Casa Baixa (Meldris) não ultrapassará cento e cinquenta representantes, sendo a atualização estatística demográfica dos entes federativos fornecida pelo Instituto Nacional Estatístico, Ecológico e Geográfico (INEG) no ano anterior às eleições.</p>
+        <p class="paragrafo"><b>§1º.</b> Nenhum ente federativo terá menos de dois membros.</p>
+        <p class="paragrafo"><b>§2º.</b> O Estado mais populoso será representado por vinte e um membros.</p>
+
+        <p class="artigo"><b>Art. 15-B.</b> A composição da Casa Média (Alvaris), voltada ao equilíbrio territorial e estratégico da Federação, será de cinquenta e seis cadeiras, distribuídas entre as grandes regiões:</p>
+        <p class="paragrafo"><b>§1º.</b> A Região Norte, a Região Sul e a Região Oeste contarão, cada uma, com dezesseis cadeiras.</p>
+        <p class="paragrafo"><b>§2º.</b> O Distrito Federal e os Distritos Estaduais disporão, em conjunto, de oito cadeiras.</p>
+        <p class="paragrafo"><b>§3º.</b> A definição e a revisão das regiões será feita por lei complementar, com parecer do Instituto Nacional Estatístico, Ecológico e Geográfico (INEG).</p>
+
+        <p class="artigo"><b>Art. 15-C.</b> A Casa Alta (Zindas) será composta por vinte e oito cadeiras, assegurando representação paritária entre todos os entes federativos.</p>
+        <p class="paragrafo"><b>§1º.</b> Cada Estado, Distrito Estadual e o Distrito Federal terão direito a duas cadeiras.</p>
+        <p class="paragrafo"><b>§2º.</b> Esta paridade é cláusula pétrea e somente poderá ser modificada mediante reforma constitucional aprovada por no mínimo dois terços dos membros de cada uma das três casas legislativas.</p>
+
+        <p class="artigo"><b>Art. 16.</b> Cada casa tem autonomia para regulamentar seus processos internos, respeitando a Constituição.</p>
+
+        <p class="artigo"><b>Art. 17.</b> A presidência de cada casa será exercida por presidente e vices, eleitos conforme regulamento, com mandato de 2 anos e reeleição permitida uma vez.</p>
+
+        <p class="artigo"><b>Art. 18.</b> São atribuições do parlamentar:<br>
+            <span class="inciso">I - Legislar sobre matérias da União;</span>
+            <span class="inciso">II - Aprovar o orçamento anual;</span>
+            <span class="inciso">III - Fiscalizar o Executivo;</span>
+            <span class="inciso">IV - Aprovar emendas constitucionais;</span>
+            <span class="inciso">V - Aprovar tratados internacionais;</span>
+            <span class="inciso">VI - Julgar o Presidente em processo de impeachment.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 19.</b> Em caso de vacância, eleições suplementares preencherão as cadeiras, respeitando proporcionalidade.</p>
+
+        <h3 class="titulo-secao">Título VI</h3>
+        <p class="subtitulo-secao">Do Poder Executivo</p>
+
+        <p class="artigo"><b>Art. 20.</b> O Poder Executivo é exercido pelo Presidente da República e pelo Primeiro-Ministro, auxiliados pelos ministros.</p>
+
+        <p class="artigo"><b>Art. 21.</b> Compete ao Presidente da República:<br>
+            <span class="inciso">I - Propor projetos de lei ao Parlamento;</span>
+            <span class="inciso">II - Sancionar ou vetar leis aprovadas;</span>
+            <span class="inciso">III - Comandar as Forças Armadas em tempos de paz;</span>
+            <span class="inciso">IV - Representar o país internacionalmente;</span>
+            <span class="inciso">V - Nomear ministros e diplomatas, com aprovação da Casa Alta;</span>
+            <span class="inciso">VI - Adotar medidas provisórias em casos de urgência.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 22.</b> O Presidente poderá ser destituído por:<br>
+            <span class="inciso">I - Impeachment por crimes de responsabilidade;</span>
+            <span class="inciso">II - Incapacidade física ou mental avaliada pelo Parlamento.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 23.</b> O Primeiro-Ministro, sendo indicado pelo Presidente, dirige a administração pública e coordena a execução das políticas públicas, devendo manter a confiança do Parlamento.</p>
+
+        <p class="artigo"><b>Art. 23-A.</b> O Primeiro-Ministro pode ser destituído por:<br>
+            <span class="inciso">I - Solicitação do Presidente;</span>
+            <span class="inciso">II - Moção de desconfiança do Parlamento, partindo de qualquer uma das Casas;</span>
+            <span class="inciso">III - Incapacidade física ou mental avaliada pelo Parlamento.</span>
+            <span class="paragrafo"><b>Parágrafo Único:</b> A solicitação de destituição pelo Presidente deve ser analisada no Parlamento, além de possuir justificativa legal.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 24.</b> Ministros são indicados pelo Presidente, aprovados pela Casa Alta, e responsáveis pelas áreas governamentais.</p>
+
+        <p class="artigo"><b>Art. 25.</b> O Presidente poderá criar, modificar ou extinguir ministérios, com autorização do Parlamento e respeito ao orçamento.</p>
+
+        <h3 class="titulo-secao">Título VII</h3>
+        <p class="subtitulo-secao">Do Poder Judiciário</p>
+
+        <p class="artigo"><b>Art. 26.</b> O Poder Judiciário guarda a Constituição, assegura a justiça e zela pela legalidade em todo o território da Federação.</p>
+
+        <p class="artigo"><b>Art. 27.</b> A Alta Corte Federal é o órgão supremo do Judiciário, incumbida de interpretar a Constituição, preservar a ordem federativa e julgar as controvérsias de interesse nacional.</p>
+
+        <p class="artigo"><b>Art. 28.</b> A Alta Corte Federal será composta por 11 juízes, indicados pelo Primeiro-Ministro, nomeados pelo Presidente e aprovados pela Casa Alta, com mandato vitalício.</p>
+        <p class="paragrafo"><b>Parágrafo Único:</b> Os juízes que forem indicados para Alta Corte Federal, ao completarem 70 anos terão aposentadoria compulsória.</p>
+
+        <p class="artigo"><b>Art. 28-A.</b> São requisitos para nomeação à Alta Corte Federal:<br>
+            <span class="inciso">I – nacionalidade guainense nata;</span>
+            <span class="inciso">II – reputação ilibada e notório saber jurídico;</span>
+            <span class="inciso">III – atuação pública em defesa dos direitos fundamentais e da democracia.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 28-B.</b> A Alta Corte Federal organizar-se-á internamente em três câmaras especializadas:<br>
+            <span class="inciso">I – Câmara de Fator Constitucional (CFC): responsável por julgar ações diretas de inconstitucionalidade, conflitos federativos e demais matérias constitucionais;</span>
+            <span class="inciso">II – Câmara de Fator de Justiça (CFJ): competente para temas cíveis, penais, administrativos e recursos provenientes das instâncias inferiores;</span>
+            <span class="inciso">III – Câmara de Fator Eleitoral (CFE): responsável pela jurisdição eleitoral, fiscalização de partidos e validação do processo democrático.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 28-C.</b> As câmaras serão compostas por designação interna dos membros da Corte, conforme regimento próprio, assegurando a alternância e a colegialidade.</p>
+
+        <p class="artigo"><b>Art. 29.</b> A presidência da Alta Corte Federal será exercida por um de seus membros, eleito por voto entre os juízes, com mandato de 2 anos, permitida uma reeleição.</p>
+
+        <p class="artigo"><b>Art. 30.</b> Compete ainda à Alta Corte Federal:<br>
+            <span class="inciso">I – julgar o Presidente e Primeiro-Ministro nos crimes de responsabilidade;</span>
+            <span class="inciso">II – resolver conflitos entre os entes federativos;</span>
+            <span class="inciso">III – garantir a supremacia da Constituição e o respeito aos tratados internacionais ratificados pela Federação;</span>
+            <span class="inciso">IV – uniformizar a jurisprudência nacional e zelar pela justiça nos limites da lei.</span>
+        </p>
+
+        <h3 class="titulo-secao">Título VIII</h3>
+        <p class="subtitulo-secao">Das Eleições</p>
+
+        <p class="artigo"><b>Art. 31.</b> Eleições gerais para Presidente e Governadores são a cada 4 anos, por voto direto, secreto e universal.</p>
+
+        <p class="artigo"><b>Art. 32.</b> Eleições Municipais para Prefeitos e Vereadores são a cada 4 anos, por voto direto, secreto e universal.</p>
+
+        <p class="artigo"><b>Art. 33.</b> Eleições Parlamentares são realizadas de acordo com o tempo de mandato de cada Casa, por voto direto, secreto e universal.</p>
+        <p class="paragrafo"><b>§ 1°.</b> Casa Baixa (Meldris): Ocorre a cada 4 anos, junto com as eleições gerais.</p>
+        <p class="paragrafo"><b>§ 2°.</b> Casa Média (Alvaris): Ocorre a cada 6 anos, intercalando entre as eleições gerais e municipais.</p>
+        <p class="paragrafo"><b>§ 3°.</b> Casa Alta (Zindas): Ocorre a cada 8 anos, junto com as eleições gerais.</p>
+
+        <p class="artigo"><b>Art. 34.</b> Eleições serão simultâneas em todo o território.</p>
+
+        <p class="artigo"><b>Art. 35.</b> O voto é:<br>
+            <span class="inciso">I - obrigatório para cidadãos entre 18 e 70 anos</span>
+            <span class="inciso">II - facultativo para analfabetos, maiores de 70 e jovens de 16-17 anos.</span>
+        </p>
+
+        <p class="artigo"><b>Art. 36.</b> Mandatos:<br>
+            <span class="inciso">I - Presidente: 4 anos;<br> II - Primeiro-Ministro: 4 anos;<br> III - Governadores: 4 anos;<br> IV - Prefeitos: 4 anos;<br> V - Vereadores: 4 anos;</span>
+            <span class="inciso">VI - Casa Baixa (Meldris): 4 anos;<br> VII - Casa Média (Alvaris): 6 anos;<br> VIII - Casa Alta (Zindas): 8 anos.</span>
+        </p>
+
+        <h3 class="titulo-secao">Título IX</h3>
+        <p class="subtitulo-secao">Das Disposições Gerais e Transitórias</p>
+
+        <p class="artigo"><b>Art. 37.</b> A Constituição poderá ser emendada por proposta do Presidente ou ⅓ das casas do Parlamento, aprovada por maioria qualificada.</p>
+
+        <p class="artigo"><b>Art. 38.</b> Disposições transitórias vigorarão até a plena implementação das normas, por até 2 anos.</p>
+
+        <p class="artigo"><b>Art. 39.</b> Transição legislativa e executiva será gradual, com regulamentação para garantir funcionamento das estruturas.</p>
+
+        <p class="artigo"><b>Art. 40.</b> Normas contrárias à Constituição serão revogadas, salvo prorrogação expressa.</p>
+
+        <p class="artigo"><b>Art. 41.</b> Esta Constituição entra em vigor na data de sua promulgação, revogando disposições em contrário.</p>
+
+        <div class="assinaturas-final">
+            <p>Porto Courantyne, 12 de janeiro de 2025</p>
+            <div class="bloco-ass">
+                <span class="nome-ass">Pierre Moreau</span>
+                <span class="cargo-ass">Chef Pays de Federacion de Guianas</span>
+            </div>
+            <div class="bloco-ass">
+                <span class="nome-ass">Lígia dos Santos</span>
+                <span class="cargo-ass">Vais-Chef Pays de Federacion de Guianas</span>
+            </div>
+            <div class="bloco-ass">
+                <span class="nome-ass">Omar Xavier Hoetmer</span>
+                <span class="cargo-ass">Oniem Miniser de Federacion de Guianas</span>
+            </div>
+        </div>
+             </div>
+    </article>
+</div>
+
+<div id="doc1979" class="const-content">
+    <article class="doc-page">
+        <h2 style="text-align: center; color: #0a2e52; font-family: 'Montserrat'; font-size: 1.5rem;">CONSTITUIÇÃO FEDERAL DE 1979</h2>
+        <p style="text-align: center; font-weight: bold; color: #d4af37; font-size: 0.9rem;">ASSINADA EM 12 DE NOVEMBRO DE 1979</p>
+        <hr style="border: 0; border-top: 2px solid #d4af37; width: 50px; margin: 25px auto;">
+
+        <div class="preambulo-box" style="font-style: italic; text-align: justify; margin-bottom: 30px; padding: 20px; background: #f9f9f9; border-left: 4px solid #d4af37;">
+            Nós, representantes da população guianense, imbuídos do espírito de união e estabilidade nacional, e no reconhecimento da nova força territorial e econômica da Federação, instituímos esta Constituição para modernizar o sistema de governo, consolidar a integridade territorial e garantir a justiça social.
+        </div>
+
+        <h3 class="titulo-secao">Título I - Da Nova Organização Territorial</h3>
+        <p class="artigo"><b>Art. 1º.</b> A Federação das Guianas é formada pela união indissolúvel dos Estados e do Distrito Federal, constituindo-se em um Estado soberano e unitário, garantindo a integridade territorial e a segurança nacional.</p>
+        <p class="artigo"><b>Art. 2º.</b> Os Estados da Federação são formalmente reconhecidos e consolidados como:<br>
+            <span class="inciso">I. Guiana</span>
+            <span class="inciso">II. Suriname</span>
+            <span class="inciso">III. Bolívar</span>
+            <span class="inciso">IV. Amazonas</span>
+            <span class="inciso">V. Delta Amacuro</span>
+            <span class="inciso">VI. Rio Branco</span>
+            <span class="inciso">VII. Amapá</span>
+            <span class="inciso">VIII. Oiapoque</span>
+        </p>
+        <p class="paragrafo"><b>Parágrafo Único:</b> A criação de novos Estados só poderá ocorrer mediante plebiscito e aprovação de dois terços do Poder Legislativo.</p>
+        <p class="artigo"><b>Art. 3º.</b> A capital federal é Porto Courantyne, sede do Governo da União e do Distrito Federal, cuja autonomia administrativa será definida por lei complementar.</p>
+
+        <h3 class="titulo-secao">Título II - Dos Poderes e do Sistema de Governo</h3>
+        <p class="artigo"><b>Art. 4º.</b> A União organiza-se nos Poderes Executivo, Legislativo e Judiciário, independentes e harmônicos entre si.</p>
+        <p class="artigo"><b>Art. 5º.</b> O sistema de governo da Federação adota o modelo Semipresidencialista, onde a chefia de Estado e a chefia de Governo são exercidas por pessoas distintas.</p>
+        <p class="artigo"><b>Art. 6º.</b> O Presidente da República é o Chefe de Estado, eleito por voto direto para mandato de 5 anos, sendo responsável pela defesa nacional e pela representação externa.</p>
+        <p class="artigo"><b>Art. 7º.</b> O Primeiro-Ministro é o Chefe de Governo, indicado pelo Presidente e referendado pelo Poder Legislativo, sendo responsável pela direção da administração pública e pela execução das políticas internas.</p>
+        <p class="artigo"><b>Art. 8º.</b> O Poder Legislativo é exercido por um Parlamento Bicameral:<br>
+            <span class="inciso">I. Câmara dos Representantes: Composição proporcional à população, cabendo-lhe fiscalizar o Executivo e legislar sobre o orçamento.</span>
+            <span class="inciso">II. Câmara Federal: Composição paritária entre os Estados, cabendo-lhe defender os interesses regionais e aprovar tratados internacionais.</span>
+        </p>
+        <p class="paragrafo"><b>Parágrafo Único:</b> A perda de confiança da Câmara dos Representantes no Primeiro-Ministro pode levar à sua destituição.</p>
+
+        <h3 class="titulo-secao">Título III - Da Economia e dos Direitos</h3>
+        <p class="artigo"><b>Art. 9º.</b> O subsolo, incluindo as reservas de petróleo, ouro e outros minérios, pertence à União, sendo sua exploração controlada por empresas estatais federais para garantir o desenvolvimento nacional.</p>
+        <p class="paragrafo"><b>Parágrafo Único:</b> A União criará um Fundo de Riqueza Soberana, financiado pela exploração de recursos, para investir em infraestrutura e defesa.</p>
+        <p class="artigo"><b>Art. 10.</b> São garantidos ao povo os direitos sociais à educação e à saúde pública, devendo a Federação promover a estabilidade econômica e o pleno emprego.</p>
+        <p class="artigo"><b>Art. 11.</b> A liberdade de expressão, de associação e de imprensa é um direito fundamental, mas deve ser exercida com responsabilidade e no respeito à unidade nacional.</p>
+
+        <h3 class="titulo-secao">Título IV - Disposições Finais e Transitórias</h3>
+        <p class="artigo"><b>Art. 12.</b> As eleições gerais para Presidente da República e para o novo Parlamento, conforme este novo sistema, ocorrerão no prazo máximo de 18 meses a partir da promulgação desta Constituição.</p>
+        <p class="artigo"><b>Art. 13.</b> Leis ademais serão formuladas e reformuladas posteriormente para definir demais casos de ordem maior.</p>
+        <p class="artigo"><b>Art. 14.</b> Qualquer disposição contrária será revogada imediatamente após promulgação desta Constituição.</p>
+
+        <div class="assinaturas-final" style="margin-top: 50px; text-align: center; border-top: 1px solid #ddd; padding-top: 30px;">
+            <p><i>Porto Courantyne, 12 de novembro de 1979</i></p>
+            <div style="margin-bottom: 20px;">
+                <b style="text-decoration: underline;">Daniel Fernandes</b><br>
+                <small>PRESIDENTE DA FEDERAÇÃO DAS GUIANAS</small>
+            </div>
+            <div>
+                <b style="text-decoration: underline;">Heinrich Krause</b><br>
+                <small>VICE-PRESIDENTE DA FEDERAÇÃO DAS GUIANAS</small>
+            </div>
+        </div>
+    </article>
+</div>
+
+
+<div id="doc1935" class="const-content">
+    <article class="doc-page">
+        <h2 style="text-align: center; color: #0a2e52; font-family: 'Montserrat'; font-size: 1.5rem;">CONSTITUIÇÃO FEDERAL DE 1935</h2>
+        <p style="text-align: center; font-weight: bold; color: #d4af37; font-size: 0.9rem;">ASSINADA EM 26 DE MAIO DE 1935</p>
+        <hr style="border: 0; border-top: 2px solid #d4af37; width: 50px; margin: 25px auto;">
+
+        <div class="preambulo-box" style="font-style: italic; text-align: justify; margin-bottom: 30px; padding: 20px; background: #f9f9f9; border-left: 4px solid #d4af37;">
+            Nós, representantes da população guianense, viemos por meio deste documento oficializar, os direitos e deveres, do povo e do governo.
+        </div>
+
+        <h3 class="titulo-secao">Capítulo I - Referente aos dados gerais</h3>
+        <p class="artigo"><b>Art. 1°.</b> A bandeira nacional, sempre será representada pelas ondas da riqueza (Amarelo), dos rios e mares (Azul), da paz (Branco), do povo (Vermelho) e das matas e florestas (Verde) e o Brasão Nacional.</p>
+        <p class="artigo"><b>Art. 2°.</b> O país é regido nas virtudes do povo; para o povo; e em razão do povo.</p>
+
+        <h3 class="titulo-secao">Capítulo II - Referente à população</h3>
+        <p class="artigo"><b>Art. 3°.</b> Todos são iguais perante a Lei.</p>
+        <p class="artigo"><b>Art. 4°.</b> Todos tem direito a saúde; a segurança; a moradia; ao trabalho; ao salário; ao lazer; e a vida.</p>
+        <p class="artigo"><b>Art. 5°.</b> As leis aplicam-se a todos, no desrespeito se qualquer que seja, cabe a Justiça decidir tal veredito.</p>
+
+        <h3 class="titulo-secao">Capítulo III - Referente ao Governo</h3>
+        <p class="artigo"><b>Art. 6°.</b> O Presidente é o líder do país.</p>
+        <p class="artigo"><b>Art. 7°.</b> O Vice-Presidente é o único que pode substituir o Presidente antes das eleições.</p>
+        <p class="artigo"><b>Art. 8°.</b> A liberdade de expressão deve está em todos os âmbitos do país.</p>
+
+        <h3 class="titulo-secao">Capítulo IV - Referente aos Estados</h3>
+        <p class="artigo"><b>Art. 9°.</b> Os estados da Federação são:<br>
+            <span class="inciso">I. Guiana;</span>
+            <span class="inciso">II. Suriname;</span>
+            <span class="inciso">III. Bolívar;</span>
+            <span class="inciso">IV. Amazonas;</span>
+            <span class="inciso">V. Delta Amacuro.</span>
+        </p>
+
+        <h3 class="titulo-secao">Capítulo V - Disposições Finais</h3>
+        <p class="artigo"><b>Art. 10.</b> Leis ademais serão formuladas posteriormente para definir demais casos de ordem maior.</p>
+
+        <div class="assinaturas-final" style="margin-top: 50px; text-align: center; border-top: 1px solid #ddd; padding-top: 30px;">
+            <p><i>Porto Courantyne, 26 de maio de 1935</i></p>
+            <div style="margin-bottom: 20px;">
+                <b style="text-decoration: underline;">Alberto Castillo</b><br>
+                <small>CHEFF PAYS DE FEDERACION DE GUIANAS</small>
+            </div>
+            <div>
+                <b style="text-decoration: underline;">Miguel Navarro</b><br>
+                <small>VAIS-CHEFF PAYS DE FEDERACION DE GUIANAS</small>
+            </div>
+        </div>
+    </article>
+</div>
+
+<script>
+function abrirConst(evt, idAlvo) {
+    // Esconde todos os conteúdos
+    const conteudos = document.querySelectorAll('.const-content');
+    conteudos.forEach(c => c.classList.remove('active'));
+
+    // Remove classe ativa de todos os botões
+    const botoes = document.querySelectorAll('.btn-lei');
+    botoes.forEach(b => b.classList.remove('active'));
+
+    // Mostra o selecionado e ativa o botão
+    document.getElementById(idAlvo).classList.add('active');
+    evt.currentTarget.classList.add('active');
+}
+</script>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
