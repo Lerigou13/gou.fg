@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poder Legislativo — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --azul-gov: #0a2e52;
+            --ouro-gov: #d4af37;}
+
+        /* GRID DAS TRÊS CASAS */
+
+        .intro-legislativo { text-align: center; margin-bottom: 60px; }
+        .tag-poder {
+            background: var(--ouro-gov);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .grid-casas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .card-casa {
+            background: var(--azul-gov);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .img-casa {
+            max-width: 100%; 
+            max-height: 200px; /* Limita a altura para não esticar a página */
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .card-casa:hover { transform: translateY(-10px); border-color: var(--ouro-gov); }
+
+        .casa-icone { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .casa-nome { font-size: 1.4rem; color: var(--azul-gov); font-weight: 800; margin-bottom: 5px; display: block; }
+        .casa-sub { font-size: 0.75rem; color: var(--ouro-gov); font-weight: 700; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        
+        .cadeiras-badge {
+            background: #f1f5f9;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--azul-gov);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .desc-casa { font-family: 'Lora', serif; font-size: 0.95rem; line-height: 1.7; color: white; text-align: justify; }
+
+        /* SEÇÃO PALÁCIO DO PARLAMENTO */
+        .palacio-parlamento {
+            background: var(--branco);
+            border-radius: 20px;
+            padding: 50px;
+            color: var(--azul-gov);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .info-palacio { flex: 1; }
+        .info-palacio h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--ouro-gov); }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 992px) {
+            .grid-casas { grid-template-columns: 1fr; }
+            .palacio-parlamento { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html">EDUCAÇÃO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="intro-legislativo">
+        <span class="tag-poder">Governo</span>
+        <h2 style="font-size: 2.4rem; color: var(--azul-gov); font-weight: 800; margin-top: 15px;">Parlamento Nacional</h2>
+        <p style="font-family: 'Lora', serif; max-width: 800px; margin: 0 auto; color: #475569;">O Parlamento é o coração da democracia guianense, onde as leis são debatidas e a fiscalização do Executivo é exercida através do equilíbrio entre as três casas legislativas.</p>
+    </div>
+
+    <section class="palacio-parlamento">
+        <div class="info-palacio">
+            <h3>Palácio do Parlamento</h3>
+            <p style="font-family: 'Lora', serif; line-height: 1.8; opacity: 0.9;">
+                Localizado no complexo cívico de <b>Porto Courantyne</b>, o Palácio do Parlamento é o centro da atividade legislativa nacional. O complexo abriga os plenários das três casas e as comissões parlamentares permanentes, simbolizando a união soberana das Guianas.
+            </p>
+        </div>
+        <div style="background: var(--ouro-gov); padding: 20px; border-radius: 15px; text-align: center;">
+            <span style="display: block; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Sessão Atual</span>
+            <span style="font-size: 1.2rem; font-weight: 700;">2025 - 2029</span>
+        </div>
+    </section>
+    <br>
+    <div class="grid-casas">
+        <div class="card-casa">
+            <img class="img-casa" src="img/meldris.png" alt="Original Hino">
+            <span class="casa-nome">Meldris</span>
+            <span class="casa-sub">Casa Baixa</span>
+            <div class="cadeiras-badge">150 Representantes</div>
+            <p class="desc-casa">
+                Representa a vontade proporcional do povo. É a casa iniciadora da maioria das legislações e responsável direta pela fiscalização orçamentária do Governo Federal.
+            </p>
+        </div>
+
+        <div class="card-casa">
+            <img class="img-casa" src="img/alvaris.png" alt="Original Hino">
+            <span class="casa-nome">Alvaris</span>
+            <span class="casa-sub">Casa Média</span>
+            <div class="cadeiras-badge">56 Representantes</div>
+            <p class="desc-casa">
+                Atua no equilíbrio geográfico e estratégico da Federação. Revisa as legislações aprovadas pela Meldris, garantindo que os interesses das grandes regiões sejam respeitados.
+            </p>
+        </div>
+
+        <div class="card-casa">
+            <img class="img-casa" src="img/zindas.png" alt="Original Hino">
+            <span class="casa-nome">Zindas</span>
+            <span class="casa-sub">Casa Alta</span>
+            <div class="cadeiras-badge">28 Representantes</div>
+            <p class="desc-casa">
+                A guardiã da paridade federativa. Responsável por reformas constitucionais, aprovação de tratados internacionais e nomes da Alta Corte. Cada estado possui representação igualitária.
+            </p>
+        </div>
+    </div>
+</main>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
