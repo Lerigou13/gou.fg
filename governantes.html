@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Governantes — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --azul-gov: #0a2e52;
+            --ouro-gov: #d4af37;
+            --bg-card: #ffffff;
+        }
+
+        /* Estrutura de Cards e Grades */
+        .governantes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .card-gov {
+            background: var(--bg-card);
+            border: 1px solid #e2e8f0;
+            border-left: 6px solid var(--azul-gov);
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .card-gov:hover {
+            transform: translateY(-3px);
+            border-color: var(--ouro-gov);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .num-sucessao {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: rgba(10, 46, 82, 0.05);
+            pointer-events: none;
+        }
+
+        /* Estilo das Siglas de Partidos */
+        .partido-tag {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--ouro-gov);
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 5px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Tags de Status */
+        .badge {
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 3px 7px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .tag-eleito { background: #dcfce7; color: #166534; }
+        .tag-transicao { background: #f1f5f9; color: #475569; }
+        .tag-morte { background: #fee2e2; color: #991b1b; }
+        .tag-renuncia { background: #fef3c7; color: #92400e; }
+
+        .nome-titular {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--azul-gov);
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .datas-mandato {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--ouro-gov);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .equipe-box {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .label {
+            font-size: 0.55rem;
+            font-weight: 800;
+            color: #94a3b8;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .nome-membro {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .era-divider {
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--ouro-gov);
+        }
+
+        .era-divider h2 { color: var(--azul-gov); font-weight: 800; text-transform: uppercase; font-size: 1.4rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="simbolos.html">SÍMBOLOS</a>
+            <a href="territorio.html">TERRITÓRIO</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section style="padding: 40px 0;">
+        <div class="tag dourado">MEMÓRIA HISTÓRICA</div>
+        <h2 class="titulo-destaque">Galeria de Chefes de Estado e Governo</h2>
+    </section>
+
+    <div class="era-divider"><h2>Período de Transição (1930–1932)</h2></div>
+    <div class="governantes-grid">
+        <div class="card-gov">
+            <span class="badge tag-transicao">Representante</span>
+            <span class="nome-titular">Willem van der Meer</span>
+            <span class="datas-mandato">27/02/1930 – 18/07/1932</span>
+            <span class="label">Região</span><span class="nome-membro">República das Águas</span>
+        </div>
+        <div class="card-gov">
+            <span class="badge tag-transicao">Representante</span>
+            <span class="nome-titular">José Antonio Fernández</span>
+            <span class="datas-mandato">01/03/1930 – 18/07/1932</span>
+            <span class="label">Região</span><span class="nome-membro">Bolívar</span>
+        </div>
+        <div class="card-gov">
+            <span class="badge tag-transicao">Representante</span>
+            <span class="nome-titular">Miguel Ángel Ruiz</span>
+            <span class="datas-mandato">03/03/1930 – 18/07/1932</span>
+            <span class="label">Região</span><span class="nome-membro">Amazonas</span>
+        </div>
+    </div>
+
+    <div class="era-divider"><h2>República das Bases (1932–1960)</h2></div>
+    <div class="governantes-grid">
+        <div class="card-gov">
+            <span class="badge tag-transicao">Provisório</span>
+            <span class="nome-titular">Arthur Moreland</span>
+            <span class="datas-mandato">20/07/1932 – 17/07/1934</span>
+        </div>
+        <div class="card-gov">
+            <span class="badge tag-transicao">Provisório</span>
+            <span class="nome-titular">Hendrik van Dijk</span>
+            <span class="datas-mandato">18/07/1934 – 21/04/1935</span>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">01</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Alberto Castillo <span class="partido-tag">PUN</span></span>
+            <span class="datas-mandato">23/04/1935 – 17/07/1940</span>
+            <div class="equipe-box"><span class="label">Vice-Presidente</span><span class="nome-membro">Miguel Navarro <span class="partido-tag">PUN</span></span></div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">02</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Victor dos Santos <span class="partido-tag">PUN</span></span>
+            <span class="datas-mandato">18/07/1940 – 17/07/1945</span>
+            <div class="equipe-box"><span class="label">Vice-Presidente</span><span class="nome-membro">Pierre LaFont <span class="partido-tag">PUN</span></span></div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">03</span>
+            <span class="badge tag-morte">Falecido</span>
+            <span class="nome-titular">Bernardo Siqueira <span class="partido-tag">FTG</span></span>
+            <span class="datas-mandato">18/07/1945 – 15/03/1946</span>
+            <div class="equipe-box"><span class="label">Vice-Presidente</span><span class="nome-membro">João Wallace <span class="partido-tag">FTG</span></span></div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">04</span>
+            <span class="badge tag-transicao">Sucessão</span>
+            <span class="nome-titular">João Wallace <span class="partido-tag">FTG</span></span>
+            <span class="datas-mandato">15/03/1946 – 17/07/1950</span>
+            <div class="equipe-box"><span class="label" style="color: #8b0000">Observação</span><span class="nome-membro">Assumiu após falecimento de Bernardo Siqueira</span></div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">05</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Ernesto Guzmán <span class="partido-tag">PUN</span></span>
+            <span class="datas-mandato">18/07/1950 – 17/07/1955</span>
+            <div class="equipe-box"><span class="label">Vice-Presidente</span><span class="nome-membro">Louis Martens <span class="partido-tag">PUN</span></span></div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">06</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Carlos Henrique Lopes <span class="partido-tag">PUN</span></span>
+            <span class="datas-mandato">18/07/1955 – 17/07/1960</span>
+            <div class="equipe-box"><span class="label">Vice-Presidente</span><span class="nome-membro">Julio Fernando Rivas <span class="partido-tag">PFG</span></span></div>
+        </div>
+    </div>
+
+    <div class="era-divider"><h2>República do Ouro e do Petróleo (1960–1980)</h2></div>
+    <div class="governantes-grid">
+        <div class="card-gov">
+            <span class="num-sucessao">07</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Hans Müller <span class="partido-tag">MPN</span></span>
+            <span class="datas-mandato">18/07/1960 – 17/07/1965</span>
+            <div class="equipe-box"><span class="label">Vice-Presidente</span><span class="nome-membro">Eduardo Cardozo <span class="partido-tag">MPN</span></span></div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">08</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">François Dupont <span class="partido-tag">MPN</span></span>
+            <span class="datas-mandato">18/07/1965 – 17/07/1970</span>
+            <div class="equipe-box"><span class="label">Vice-Presidente</span><span class="nome-membro">Alcides Pereira <span class="partido-tag">PUN</span></span></div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">09</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Alexandre Martins <span class="partido-tag">PFG</span></span>
+            <span class="datas-mandato">18/07/1970 – 17/07/1975</span>
+            <div class="equipe-box"><span class="label">Vice-Presidente</span><span class="nome-membro">Isaac van Rijn <span class="partido-tag">PFG</span></span></div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">10</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Daniel Fernandes <span class="partido-tag">MPN</span></span>
+            <span class="datas-mandato">18/07/1975 – 17/07/1980</span>
+            <div class="equipe-box"><span class="label">Vice-Presidente</span><span class="nome-membro">Heinrich Krause <span class="partido-tag">MPN</span></span></div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">11</span>
+            <span class="badge tag-renuncia">Renunciou</span>
+            <span class="nome-titular">Heinrich Krause <span class="partido-tag">MPN</span></span>
+            <span class="datas-mandato">18/07/1980 – 23/11/1981</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">Pierre Lambert <span class="partido-tag">PUN</span></span>
+                <span class="label">Primeiro-Ministro</span><span class="nome-membro">Jean-Paul Vieira <span class="partido-tag">FTG</span></span>
+            </div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">12</span>
+            <span class="badge tag-transicao">Sucessão</span>
+            <span class="nome-titular">Pierre Lambert <span class="partido-tag">PUN</span></span>
+            <span class="datas-mandato">23/11/1981 – 31/12/1984</span>
+            <div class="equipe-box">
+                <span class="label">Primeiro-Ministro</span><span class="nome-membro">Jean-Paul Vieira <span class="partido-tag">FTG</span></span>
+                <span class="label" style="color: #8b0000">Observação</span><span class="nome-membro">Assumiu após renúncia de Heinrich Krause</span></div>
+        </div>
+    </div>
+
+    <div class="era-divider"><h2>Nova República (1985–Atual)</h2></div>
+    <div class="governantes-grid">
+        <div class="card-gov">
+            <span class="num-sucessao">13</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">João Macalister <span class="partido-tag">PCL</span></span>
+            <span class="datas-mandato">01/01/1985 – 31/12/1988</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">Esteban Duarte <span class="partido-tag">PFG</span></span>
+                <span class="label">Primeiro-Ministro</span><span class="nome-membro">Lucas André Paredes <span class="partido-tag">PUN</span></span>
+            </div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">14</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Pedro de Boer <span class="partido-tag">PFG</span></span>
+            <span class="datas-mandato">01/01/1989 – 31/12/1992</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">Marcos Vicente Rocha <span class="partido-tag">PUN</span></span>
+                <span class="label">Primeiro-Ministro</span><span class="nome-membro">Willem Costa Navarro <span class="partido-tag">PCL</span></span>
+            </div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">15</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">André Gonçalves <span class="partido-tag">FTG</span></span>
+            <span class="datas-mandato">01/01/1993 – 31/12/1996</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">Cláudia Helena Ruiz <span class="partido-tag">PVG</span></span>
+                <span class="label">Primeiro-Ministro</span><span class="nome-membro">Helena M. Tavares <span class="partido-tag">FTG</span></span>
+            </div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">16</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Carlos Miguel Torres <span class="partido-tag">PUN</span></span>
+            <span class="datas-mandato">01/01/1997 – 31/12/2000</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">Erick van Dalen <span class="partido-tag">PFG</span></span>
+                <span class="label">Primeiro-Ministro</span><span class="nome-membro">Julian Alencar Duarte <span class="partido-tag">PCL</span></span>
+            </div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">17</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Henrique Barros <span class="partido-tag">FTG</span></span>
+            <span class="datas-mandato">01/01/2001 – 31/12/2004</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">Felipe Garnier <span class="partido-tag">PVG</span></span>
+                <span class="label">Primeiro-Ministro</span><span class="nome-membro">François Lima Monteiro <span class="partido-tag">PCL</span></span>
+            </div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">18</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Guilherme Hendriks <span class="partido-tag">PUN</span></span>
+            <span class="datas-mandato">01/01/2005 – 31/12/2008</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">Daniela Arantes Legrand <span class="partido-tag">PCL</span></span>
+                <span class="label">Primeiro-Ministro</span><span class="nome-membro">Isabel Ruiz Corrêa <span class="partido-tag">PVG</span></span>
+            </div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">19</span>
+            <span class="badge tag-eleito">Eleito</span>
+            <span class="nome-titular">Franz Weber <span class="partido-tag">PFG</span></span>
+            <span class="datas-mandato">01/01/2009 – 31/12/2012</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">João Victor Medina <span class="partido-tag">PVG</span></span>
+                <span class="label">Primeiro-Ministro</span><span class="nome-membro">Danilo Fernández Soares <span class="partido-tag">PUN</span></span>
+            </div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">20</span>
+            <span class="badge tag-eleito" style="background:#dcfce7">Reeleito</span>
+            <span class="nome-titular">Louis Almeida <span class="partido-tag">UPG/PVG</span></span>
+            <span class="datas-mandato">01/01/2013 – 31/12/2020</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">Ricardo Vanegas <span class="partido-tag">PUN</span></span>
+                <span class="label">Primeiros-Ministros</span>
+                <span class="nome-membro">Verônica Kübler da Costa <span class="partido-tag">FTG</span></span><br>
+                <span class="nome-membro">Tiago Aranha Lopes <span class="partido-tag">PCL</span></span>
+            </div>
+        </div>
+        <div class="card-gov">
+            <span class="num-sucessao">21</span>
+            <span class="badge tag-eleito">Atual / Reeleito</span>
+            <span class="nome-titular">Pierre Moreau <span class="partido-tag">PCL</span></span>
+            <span class="datas-mandato">01/01/2021 – Atual</span>
+            <div class="equipe-box">
+                <span class="label">Vice-Presidente</span><span class="nome-membro">Lígia dos Santos <span class="partido-tag">FTG</span></span>
+                <span class="label">Primeiros-Ministros</span>
+                <span class="nome-membro">Catarina Figueiredo <span class="partido-tag">PVG</span></span><br>
+                <span class="nome-membro">Omar Xavier Hoetmer <span class="partido-tag">PUN</span></span>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

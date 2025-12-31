@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organização Territorial — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos específicos para a Página de Território */
+        .map-gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .map-box {
+            background: #111827;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #374151;
+        }
+        .map-box h4 { color: var(--ouro); margin-bottom: 10px; font-size: 0.8rem; text-transform: uppercase; }
+        .map-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--ouro);
+            color: #111827;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.65rem;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .map-link:hover { background: #fff; }
+
+        /* Regiões */
+        .regioes-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 50px; }
+        .regiao-card { padding: 20px; border-radius: 8px; color: white; }
+        .norte { background: #2d5a27; }
+        .sul { background: #a67c00; }
+        .oeste { background: #0a2e52; }
+        .regiao-card h4 { margin-bottom: 10px; font-size: 1rem; }
+        .regiao-card p { font-size: 0.75rem; line-height: 1.5; opacity: 0.9; }
+
+        /* Grade de Estados - 3 Colunas */
+        .state-full-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--azul);
+            overflow: hidden;
+        }
+        .state-grid-triple {
+            display: grid;
+            grid-template-columns: 180px 280px 1fr;
+            gap: 0;
+        }
+        .col-bandeira {
+            background: #fdfdfd;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #eee;
+        }
+        .titulo-destaque {
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: #1a202c; /* Cor escura padrão do site */
+            padding-left: 15px;
+            border-left: 6px solid #d4af37; /* O tom de ouro/amarelo que você está usando */
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .col-bandeira img { width: 100%; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        .sigla-big { font-weight: 900; font-size: 2rem; color: #eee; }
+
+        .col-ficha { background: #f8f9fa; padding: 25px; border-right: 1px solid #eee; }
+        .col-ficha h3 { font-size: 1.2rem; color: var(--azul); margin-bottom: 15px; text-transform: uppercase; border-bottom: 2px solid var(--ouro); display: inline-block; }
+        
+        .ficha-tecnica { font-size: 0.8rem; }
+        .ficha-line { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #e9ecef; }
+        .ficha-line strong { color: #333; }
+
+        .col-historia { padding: 25px; display: flex; flex-direction: column; }
+        .col-historia h4 { color: #333; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .col-historia p { font-size: 0.85rem; line-height: 1.6; color: #555; text-align: justify; }
+        .footer-integracao { margin-top: auto; padding-top: 15px; border-top: 1px solid #f0f0f0; font-size: 0.7rem; color: #888; text-transform: uppercase; }
+
+        /* Cores de Categoria */
+        .distrito-border { border-top-color: var(--ouro); }
+        .proposta-border { border-top-color: var(--vermelho); border-top-style: dashed; }
+
+        @media (max-width: 1000px) {
+            .state-grid-triple { grid-template-columns: 1fr 1fr; }
+            .col-historia { grid-column: span 2; border-top: 1px solid #eee; }
+            .regioes-container, .map-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html">EDUCAÇÃO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section style="padding: 40px 0;">
+        <div class="tag dourado">DIVISÃO TERRITORIAL</div>
+        <h2>Organização Territorial</h2>
+        
+        <h2 class="titulo-destaque">mapas</h2>
+
+        <div class="map-gallery">
+            <div class="map-box"><h4>Mapa da Federação</h4><a href="img/mapa-federacao.png" class="map-link">VER MAPA</a></div>
+            <div class="map-box"><h4>Mapa dos Estados</h4><a href="img/mapa-estados.png" class="map-link">VER MAPA</a></div>
+            <div class="map-box"><h4>Mapa dos Distritos</h4><a href="img/mapa-distritos.png" class="map-link">VER MAPA</a></div>
+            <div class="map-box"><h4>Mapa das Regiões</h4><a href="img/mapa-regioes.png" class="map-link">VER MAPA</a></div>
+            <div class="map-box"><h4>Mapa das Propostas</h4><a href="img/mapa-propostas.png" class="map-link">VER MAPA</a></div>
+        </div>
+    </section>
+
+    <div class="state-full-card" style="border-top: 6px solid var(--ouro);">
+        <div class="state-grid-triple">
+            <div class="col-bandeira">
+                <img src="img/portocourantyne.png" alt="Brasão de Porto Courantyne">
+                <span class="sigla-big" style="color: var(--ouro); opacity: 0.3;">DF</span>
+            </div>
+    
+            <div class="col-ficha">
+                <h3 style="color: var(--ouro);">Porto Courantyne</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Status</span><strong>Capital Federal</strong></div>
+                    <div class="ficha-line"><span>Localização</span><strong>Ilha de Baboon</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>128.950</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>40,1 km²</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 10 bilhões</strong></div>
+                    <div class="ficha-line"><span>Fundação</span><strong>1933</strong></div>
+                </div>
+            </div>
+    
+            <div class="col-historia">
+                <h4>Sede do Governo Federal</h4>
+                <p>
+                    Localizada num aglomerado estratégico de ilhas no Rio Courantyne, na fronteira entre Guiana e Suriname. Fundada em 1933 após a união da República das Águas com Bolívar e Amazonas, a cidade foi planeada para ser o coração administrativo da União. Abriga o Palácio da Alvorada, o Congresso Federal e a icónica Estátua da Liberdade, personificação nacional da Federação.
+                </p>
+                <div class="footer-integracao">
+                    <strong>Distância do Mar:</strong> 17 km | <strong>Sede Administrativa</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h2 class="titulo-destaque">regiões</h2>
+    <section class="regioes-container">
+        <div class="regiao-card norte">
+            <h4>REGIÃO NORTE</h4>
+            <p>Faixa litorânea histórica (Guiana, Suriname, Oiapoque). Polo de serviços e mineração.</p>
+        </div>
+        <div class="regiao-card sul">
+            <h4>REGIÃO SUL</h4>
+            <p>Transição amazônica (Amapá, Trombetas, Rio Branco). Foco em bioeconomia e energia.</p>
+        </div>
+        <div class="regiao-card oeste">
+            <h4>REGIÃO OESTE</h4>
+            <p>Maior biodiversidade (Amazonas, Bolívar, Delta Amacuro, Guayana). Recursos estratégicos.</p>
+        </div>
+    </section>
+    <h2 class="titulo-destaque">estados</h2>
+    <div class="state-full-card">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/guiana.png"><span class="sigla-big">GU</span></div>
+            <div class="col-ficha">
+                <h3>Guiana</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Norte</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>214.970 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>782.766</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 248,4 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Raízes indígenas Arawak e Caribes. Após domínios europeus, declarou independência em 1799. Em 1932, tornou-se estado fundador da Federação após a resistência no Essequibo.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 18/07/1932 | IDIOMA: INGLÊS</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="state-full-card">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/suriname.png"><span class="sigla-big">SU</span></div>
+            <div class="col-ficha">
+                <h3>Suriname</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Norte</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>163.820 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>634.431</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 47,1 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Antigo centro agrícola holandês. Em 1932, liderou a formação da República das Águas, embrião da Federação, consolidando-se como pilar histórico e político da União.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 18/07/1932 | IDIOMA: INGLÊS / HOLANDÊS</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="state-full-card">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/oiapoque.png"><span class="sigla-big">OI</span></div>
+            <div class="col-ficha">
+                <h3>Oiapoque</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Norte</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>83.534 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>301.099</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 50 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Antiga Guiana Alemã (1919-1946). Incorporada via Tratado de Cayena, fortalece a integração amazônica e a diversidade cultural da fronteira leste.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 15/12/1946 | IDIOMA: ALEMÃO / FRANCÊS</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="state-full-card" style="border-top-color: #0a2e52;">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/amapa.png"><span class="sigla-big">AP</span></div>
+            <div class="col-ficha">
+                <h3>Amapá</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Sul</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>142.471 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>802.837</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 236,4 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Disputado entre portugueses e franceses desde o século XVI. Após a Controvérsia do Amapá (1900), permaneceu como periferia brasileira até a década de 30, quando movimentos separatistas levaram à sua integração à Federação em 1937 após a Guerra Amazônica.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 23/08/1937 | IDIOMA: PORTUGUÊS</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="state-full-card" style="border-top-color: #0a2e52;">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/riobranco.png"><span class="sigla-big">RB</span></div>
+            <div class="col-ficha">
+                <h3>Rio Branco</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Sul</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>223.505 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>738.772</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 210,1 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Antiga zona marginal do Império Brasileiro, explorada por bandeirantes e jesuítas. Em 1937, aderiu à causa revolucionária pela criação de uma federação regional independente, tornando-se elo estratégico entre o norte amazônico e o interior.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 23/08/1937 | IDIOMA: PORTUGUÊS</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="state-full-card" style="border-top-color: #0a2e52;">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/trombetas.png"><span class="sigla-big">TB</span></div>
+            <div class="col-ficha">
+                <h3>Trombetas</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Sul</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>280.138 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>688.467</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 55,1 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Estado integrado em 2022 após negociações com a Amazônia. Rico em bauxita e biodiversidade, tornou-se símbolo do compromisso federativo com a proteção da floresta e valorização das comunidades tradicionais e ribeirinhas.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 07/05/2022 | IDIOMA: PORTUGUÊS</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="state-full-card" style="border-top-color: #0a2e52;">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/bolivar.png"><span class="sigla-big">BO</span></div>
+            <div class="col-ficha">
+                <h3>Bolívar</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Oeste</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>142.800 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>1.056.125</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 40,8 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Após séculos de domínio espanhol frágil, uniu-se à luta pela independência contra o autoritarismo de Caracas entre 1930 e 1932. Atua como elo vital entre a Amazônia profunda e os centros administrativos da Federação.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 18/07/1932 | IDIOMA: ESPANHOL</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="state-full-card" style="border-top-color: #0a2e52;">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/amazonas.png"><span class="sigla-big">AM</span></div>
+            <div class="col-ficha">
+                <h3>Amazonas</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Oeste</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>184.250 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>190.534</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 47,3 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Historicamente isolado, o Amazonas aderiu à Guerra de Independência em 1930 para fugir da marginalização. Hoje equilibra a preservação ambiental estrita com o desenvolvimento sustentável em sua vasta área florestal.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 18/07/1932 | IDIOMA: ESPANHOL</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="state-full-card" style="border-top-color: #0a2e52;">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/deltamacuro.png"><span class="sigla-big">DA</span></div>
+            <div class="col-ficha">
+                <h3>Delta Amacuro</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Oeste</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>40.200 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>663.360</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 91,6 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Criado em 1935 para consolidar a soberania sobre o antigo território do Essequibo. Possui geografia fluvial complexa e desempenha papel estratégico na logística hídrica e identidade ambiental da União.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 26/05/1935 | IDIOMA: ESPANHOL</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="state-full-card" style="border-top-color: #0a2e52;">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/guayana.png"><span class="sigla-big">GA</span></div>
+            <div class="col-ficha">
+                <h3>Guayana</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Região</span><strong>Oeste</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>95.200 km²</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>704.890</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 27,2 bi</strong></div>
+                    <div class="ficha-line"><span>Status</span><strong>Estado Membro</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Desmembrado do leste de Bolívar em 2025 para atender demandas por representatividade. Localizado na bacia Orinoco-Cuyuní, atua como ponte administrativa e polo de valorização das identidades culturais locais.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 12/01/2025 | IDIOMA: ESPANHOL</div>
+            </div>
+        </div>
+    </div>
+    
+    <h2 class="titulo-destaque">distritos estaduais</h2>
+    <div class="state-full-card distrito-border">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/trindade.png"><span class="sigla-big">TR</span></div>
+            <div class="col-ficha">
+                <h3>Trindade</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Status</span><strong>Distrito Estadual</strong></div>
+                    <div class="ficha-line"><span>Matriz</span><strong>Delta Amacuro</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>813.678</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 211,5 bi</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>4.830 km²</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Integrado em 2021 pelo Tratado de Scarborough. Polo econômico caribenho com forte setor energético e portuário, mantendo autonomia administrativa.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 24/11/2021 | IDIOMA: INGLÊS</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="state-full-card distrito-border">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/tobago.png"><span class="sigla-big">TO</span></div>
+            <div class="col-ficha">
+                <h3>Tobago</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Status</span><strong>Distrito Estadual</strong></div>
+                    <div class="ficha-line"><span>Matriz</span><strong>Delta Amacuro</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>70.547</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 18,5 bi</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>298 km²</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Incorporado em 2021 pelo Tratado de Scarborough. Tobago mantém uma identidade cultural distinta com foco em turismo sustentável e conservação marinha. Desde 2025, funciona como ponto estratégico da Federação no Caribe e conexão insular.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 24/11/2021 | IDIOMA: INGLÊS</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="state-full-card distrito-border">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/tigri.png"><span class="sigla-big">TI</span></div>
+            <div class="col-ficha">
+                <h3>Triângulo do Tigri</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Status</span><strong>Distrito de Conservação</strong></div>
+                    <div class="ficha-line"><span>Matrizes</span><strong>Guiana e Suriname</strong></div>
+                    <div class="ficha-line"><span>População</span><strong>80</strong></div>
+                    <div class="ficha-line"><span>PIB</span><strong>A$ 0,5 mi</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>17.635 km²</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>História e Sociedade</h4>
+                <p>Criado em 2025 como solução diplomática para uma zona historicamente contestada. É uma unidade voltada estritamente à preservação ambiental, monitoramento climático e cooperação científica, sendo o coração ecológico da União.</p>
+                <div class="footer-integracao">INTEGRAÇÃO: 12/01/2025 | IDIOMA: INGLÊS</div>
+            </div>
+        </div>
+    </div>
+    
+    <h2 class="titulo-destaque">propostas de criação de estados</h2>
+    <div class="state-full-card proposta-border">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/essequibo.png"><span class="sigla-big">ES</span></div>
+            <div class="col-ficha">
+                <h3>Essequibo</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Status</span><strong>Proposta</strong></div>
+                    <div class="ficha-line"><span>Matrizes</span><strong>Guiana</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>144.046 km²</strong></div>
+                    <div class="ficha-line"><span>Reivindicação</span><strong>Desde 1962</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>Contexto Histórico</h4>
+                <p>Símbolo da luta contra a ocupação venezuelana. Embora plenamente integrado à Guiana, a proposta de estado próprio visa cicatrizar feridas históricas de 1915.</p>
+                <div class="footer-integracao">FORMALIZAÇÃO DO PEDIDO: 2021</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="state-full-card proposta-border">
+        <div class="state-grid-triple">
+            <div class="col-bandeira"><img src="img/pirara.png"><span class="sigla-big">PR</span></div>
+            <div class="col-ficha">
+                <h3>Pirara</h3>
+                <div class="ficha-tecnica">
+                    <div class="ficha-line"><span>Status</span><strong>Proposta</strong></div>
+                    <div class="ficha-line"><span>Matrizes</span><strong>Rio Branco e Guiana</strong></div>
+                    <div class="ficha-line"><span>Área</span><strong>54.687 km²</strong></div>
+                    <div class="ficha-line"><span>Reivindicação</span><strong>Desde 1993</strong></div>
+                </div>
+            </div>
+            <div class="col-historia">
+                <h4>Contexto Histórico</h4>
+                <p>Antigo palco da Questão do Pirara entre Portugal e Reino Unido. A proposta de criação do Estado, formalizada em 2025, busca a reconciliação histórica e a valorização das populações indígenas na fronteira entre Rio Branco e Guiana.</p>
+                <div class="footer-integracao">FORMALIZAÇÃO DO PEDIDO: 2025</div>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

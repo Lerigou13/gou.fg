@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Símbolos Nacionais — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* GRID DE SÍMBOLOS (4 COLUNAS) */
+        .grid-simbolos-oficiais {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .card-simbolo {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--azul);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .card-simbolo img {
+            width: 100%;
+            max-height: 120px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        /* CARD DO LEMA COM BORDA AZUL */
+        .lema-card-box {
+            background: #fdfdfd; 
+            border: 1px solid #eee; 
+            border-bottom: 4px solid var(--azul); /* Borda azul igual aos outros */
+            border-radius: 12px; 
+            padding: 25px; 
+            margin-bottom: 40px; 
+            text-align: center;
+        }
+
+        /* ESTRUTURA DE COLUNAS PARA DOCUMENTOS (ESTILO ESTADOS) */
+        .doc-full-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--ouro);
+            overflow: hidden;
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr; /* Coluna da imagem com tamanho fixo controlado */
+        }
+
+        .doc-col-imagem {
+            padding: 25px;
+            background: #f9f9f9;
+            border-right: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Controle para a imagem não ficar gigante */
+        .doc-col-imagem img {
+            max-width: 100%; 
+            max-height: 400px; /* Limita a altura para não esticar a página */
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            object-fit: contain;
+        }
+
+        .doc-col-texto {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .transcricao-box {
+            font-family: 'Georgia', serif;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #333;
+            white-space: pre-line;
+            border-left: 3px solid var(--ouro);
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 850px) {
+            .doc-grid {
+                grid-template-columns: 250px 1fr; /* Reduz a coluna da foto em telas médias */
+            }
+        }
+
+        @media (max-width: 650px) {
+            .doc-grid {
+                grid-template-columns: 1fr; /* Só vira uma coluna em telas de celular mesmo */
+            }
+            .doc-col-imagem {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html">EDUCAÇÃO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    
+    <section style="padding: 40px 0 20px 0;">
+        <div class="tag dourado">IDENTIDADE NACIONAL</div>
+        <h2 class="titulo-destaque">Símbolos e Atos Oficiais</h2>
+        <p style="color: #666;">Documentação histórica e heráldica da União.</p>
+    </section>
+
+    <div class="lema-card-box">
+        <small style="color: var(--ouro); font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">Lema Nacional</small>
+        <div style="margin-top: 10px;">
+            <h2 style="font-size: 2.2rem; font-weight: 900; color: var(--azul); letter-spacing: 6px; text-transform: uppercase; margin: 0;">
+                Unidades na União
+            </h2>
+        </div>
+    </div>
+
+    <div class="grid-simbolos-oficiais">
+        <div class="card-simbolo"><img src="img/bandeira.png"><h3>Bandeira</h3></div>
+        <div class="card-simbolo"><img src="img/brasao.png"><h3>Brasão</h3></div>
+        <div class="card-simbolo"><img src="img/selo.png"><h3>Selo Nacional</h3></div>
+        <div class="card-simbolo"><img src="img/guilerma.png"><h3>A Guilerma</h3></div>
+    </div>
+
+    <h3 class="titulo-destaque">Hino Nacional</h3>
+    <div class="doc-full-card">
+        <div class="doc-grid">
+            <div class="doc-col-imagem">
+                <img src="img/hino.png" alt="Original Hino">
+                <div style="margin-top: 20px; background: #111827; padding: 12px; border-radius: 6px; width: 100%;">
+                    <audio controls style="width: 100%; height: 30px;">
+                        <source src="audio/Hino Nacional FG.mp3">
+                    </audio>
+                </div>
+            </div>
+            <div class="doc-col-texto">
+                <h4 style="color: var(--azul); text-transform: uppercase; font-size: 0.85rem;">Letra do Hino Nacional</h4>
+                <div class="transcricao-box">
+                    Nas margens verdes do grande nascente,
+                    Ergue-se firme a nossa nação.
+                    De mil raizes, um so continente:
+                    Pulsa um só povo, um só coração.
+
+                    Unidades na União!
+                    Vozes, cores, um só chão;
+                    Guianas fortes, de mãos dadas,
+                    Ecoando a mesma canção.
+                    
+                    Por rios vivos e selva imensa,
+                    Marchamos livres, em comunhão.
+                    Sob a bandeira que nos condensa:
+                    Coragem, história e construção.
+
+                    Unidades na União! (Refrão)
+                    
+                    Nossos caminhos, tão distintos,
+                    Se entrelaçaram sem divisão.
+                    E hoje brilham, plenos e extintos,
+                    Os grilhões da separação.
+                    
+                    Unidades na União! (Refrão)
+                    
+                    Da terra-mãe vem nossa herança:
+                    Do povo, a força e direção.
+                    Do cêu, a paz e a esperança,
+                    Que guia a federação.
+
+                    Mireille Camará e Laurentino Bentez
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="titulo-destaque">Declaração de União (1932)</h3>
+    <div class="doc-full-card" style="border-top-color: var(--azul);">
+        <div class="doc-grid">
+            <div class="doc-col-imagem">
+                <img src="img/declaracao.png" alt="Original 1932">
+            </div>
+            <div class="doc-col-texto">
+                <h4 style="color: var(--azul); text-transform: uppercase; font-size: 0.85rem;">Transcrição do Ato</h4>
+                <div class="transcricao-box" style="font-family: 'Montserrat', sans-serif; font-style: normal;">
+                    "Feita na Cidade de Upata aos dezoito dias do mês de julho do ano de mil novecentos e trinta e dois.
+
+                    Nós, representantes legítimos dos povos da República das Águas, do Estasto Livre do Amazonas e da República de Bolívar e Delta, reunidos na cidade de Upata, conscientes da gravidade de nosso tempo e da responsabilidade perante as futuras gerações, proclamamos a união de nossos territórios sob a forma federativa, dando origem à Federação das Guianas.
+                    
+                    Unimo-nos após décadas de construção nacional, resistência e busca por autodeterminação. Vimos nossos povos florescerem em liberdade durante o século XIX, enfrentando os desafios da independência e do reconhecimento internacional. Mas também vimos a sombra da guerra recair sobre nossas terras: a ocupação estrangeira, a divisão do Essequibo, o avanço hostil de interesses que não falavam por nossos povos.
+                    
+                    Diante da agressão e do desrespeito, resistimos juntos. A República das Águas, nascida da união entre Suriname e Guiana, sustentou o legado de soberania popular frente à invasão. O Estado Livre do Amazonas, erguido das lutas do povo do interior venezuelano, rompeu com a tirania e clamou por autonomia. Bolívar e Delta, herdeiros de uma história de trabalho, sacrifício e dignidade, tomaram para si o destino comum de seus habitantes.
+                    
+                    A guerra que nos foi imposta não destruiu nossa esperança - fortaleceu nossa aliança. Com a vitória conquistada em nome da liberdade, tornou-se inevitável que nossas bandeiras se encontrassem num mesmo horizonte. Assim, nesta data histórica, declaramos formada a Federação das Guianas: união politica e fraterna, fundada no princípio da soberania dos povos, no respeito à diversidade cultural e na cooperação solidária entre estados.
+                    
+                    Comprometemo-nos a estabelecer uma Constituição comum que fundamente os direitos e deveres de todos os cidadãos guianeses. Comprometemo-nos com a justiça, com a paz e com o desenvolvimento sustentável de e nossas terras, rios, florestas e cidades. Comprometemo-nos, sobretudo, a nunca mais permitir que a divisão e o silêncio impeçam a voz dos nossos povos de se fazer ouvir.
+                    
+                    Como sede provisória de nossas instituições federais, elegemos a cidade de Georgetown, símbolo de coexistência entre culturas, enquanto estudos futuros definirão, com base no consenso e na geografia, o local definitivo para abrigar nossa capital comum. Também reconhecemos como centros politicos e administrativos da Federação, neste momento de transição, as cidades de Paramaribo, Ciudad Bolívar e Puerto Ayacucho, que tanto contribuíram para esta união.
+                    
+                    Esta Declaração, solenemente redgida e aprováda por delegações reconhecidas, será o marco inangural de nossa história comum. Que ela seja lembrada não apenas como um ato político, mas como um gesto de coragem, visão e fraternidade entre povos livres.
+                    
+                    Em nome dos povos livres, pelos rios que nos unem, pelas gerações que virão."
+                    
+                    <div style="margin-top: 30px; font-size: 0.8rem; border-top: 1px solid #eee; padding-top: 15px;">
+                        <strong>Representante:</strong> Willem van der Meer (República das Águas)<br>
+                        <strong>Representante:</strong> José Antonio Fernández (República de Bolívar e Delta)<br>
+                        <strong>Representante:</strong> Miguel Ángel Ruiz (Estado Livre do Amazonas)<br>
+                        <strong>Redator:</strong> Teodoro V. Melguiso (Jurista)<br>
+                        <strong>Co-redator:</strong> Efraín Yaguarebo (Antropólogo)<br>
+                        <strong>Testemunha:</strong> Santiago Bermúdez (Prefeito de Upata)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

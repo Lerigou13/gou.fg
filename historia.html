@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História da Federação — Portal Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .timeline { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .timeline-item { 
+            background: white; 
+            padding: 30px; 
+            border-radius: var(--radius); 
+            margin-bottom: 40px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--ouro);
+        }
+        .period-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 15px; 
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .period-header h3 { color: var(--azul); font-size: 1.3rem; }
+        .period-header .date-tag { 
+            background: var(--azul); color: white; padding: 5px 15px; 
+            border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+        }
+        .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+        .history-text p { font-size: 0.95rem; line-height: 1.7; color: #4a5568; text-align: justify; margin-bottom: 15px; }
+        .history-img { width: 100%; border-radius: 8px; border: 1px solid #ddd; object-fit: cover; }
+        .mini-tags-box { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+        .m-tag { font-size: 0.65rem; background: #edf2f7; color: var(--azul); padding: 3px 8px; border-radius: 4px; font-weight: 700; }
+
+        @media (max-width: 850px) {
+            .history-grid { grid-template-columns: 1fr; }
+            .period-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+    
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html">EDUCAÇÃO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero-main-text" style="padding: 60px 0;">
+        <div class="tag dourado">MEMÓRIA E SOBERANIA</div>
+        <h2>História da Federação</h2>
+        <p>A trajetória completa das terras guianenses, desde os tempos ancestrais até a consolidação da Nova República.</p>
+    </section>
+
+    
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Período Pré-Colonial</h3>
+                <span class="date-tag">Antes de 1499</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Antes da chegada dos europeus, as terras eram habitadas por tribos indígenas como Arawak e Caribes. Viviam de forma autossustentável em uma região de rica biodiversidade e rios navegáveis fundamentais.</p>
+                    <div class="mini-tags-box"><span class="m-tag">GERAL</span></div>
+                </div>
+                <img src="img/precolonial.png" alt="Pré-Colonial" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Período Colonial Espanhol</h3>
+                <span class="date-tag">1499 – 1811</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Início com Ojeda e Vespúcio. A Espanha reivindicou Guiana e Suriname, mas com presença limitada pela resistência indígena. Bolívar e Amazonas foram incluídos em Nova Granada de forma simbólica, com pouca exploração mineral.</p>
+                    <div class="mini-tags-box">
+                        <span class="m-tag">GUIANA</span><span class="m-tag">SURINAME</span><span class="m-tag">BOLÍVAR</span><span class="m-tag">AMAZONAS</span>
+                    </div>
+                </div>
+                <img src="img/espanha.png" alt="Colonial Espanhol" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Domínio Português</h3>
+                <span class="date-tag">1500 – 1822</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Amapá e Rio Branco foram disputados entre portugueses e franceses. Bandeirantes e jesuítas exploraram a região, concentrando a presença em pequenas fortificações e missões no norte amazônico.</p>
+                    <div class="mini-tags-box"><span class="m-tag">AMAPÁ</span><span class="m-tag">RIO BRANCO</span></div>
+                </div>
+                <img src="img/portugal.png" alt="Domínio Português" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Domínio Francês</h3>
+                <span class="date-tag">1503 – 1919</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>França fixou-se na região após disputas com Portugal. Oiapoque consolidou-se como fronteira sul da Guiana Francesa. A região permaneceu periférica, com vilarejos costeiros e baixa urbanização.</p>
+                    <div class="mini-tags-box"><span class="m-tag">OIAPOQUE</span></div>
+                </div>
+                <img src="img/franca.png" alt="Domínio Francês" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Domínio Holandês</h3>
+                <span class="date-tag">1648 – 1715</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Tratado de Münster consolidou colônias como Suriname. Economia baseada em plantações e mão de obra escravizada. Cidades costeiras cresceram, enquanto o interior seguiu sob controle indígena.</p>
+                    <div class="mini-tags-box"><span class="m-tag">SURINAME</span></div>
+                </div>
+                <img src="img/holanda.png" alt="Domínio Holandês" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Domínio Britânico</h3>
+                <span class="date-tag">1715 – 1799</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Império Britânico assumiu o controle. Substituiu a escravidão por trabalho contratado asiático. Houve investimento em infraestrutura, mas profundas desigualdades e tensões sociais foram geradas.</p>
+                    <div class="mini-tags-box"><span class="m-tag">GUIANA</span><span class="m-tag">SURINAME</span></div>
+                </div>
+                <img src="img/reinounido.png" alt="Domínio Britânico" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Período de Estabilização</h3>
+                <span class="date-tag">1799 – 1815</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Independência da Guiana (1799) e Suriname (1823). Início de um cenário de cooperação e administração própria, apesar da dependência agrícola inicial.</p>
+                    <div class="mini-tags-box"><span class="m-tag">GUIANA</span><span class="m-tag">SURINAME</span></div>
+                </div>
+                <img src="img/estabilizacao.png" alt="Estabilização" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Domínio Venezuelano</h3>
+                <span class="date-tag">1811 – 1930</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Bolívar e Amazonas incorporados à Venezuela. Com a ocupação do Essequibo em 1915, o autoritarismo de Caracas gerou insatisfação, culminando na Guerra de Independência local em 1932.</p>
+                    <div class="mini-tags-box"><span class="m-tag">BOLÍVAR</span><span class="m-tag">AMAZONAS</span></div>
+                </div>
+                <img src="img/venezuela.png" alt="Domínio Venezuelano" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Domínio Brasileiro</h3>
+                <span class="date-tag">1822 – 1936</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Amapá e Rio Branco tornaram-se periféricos no Império Brasileiro. Após a Controvérsia do Amapá e movimentos separatistas dos anos 30, integraram o processo revolucionário federativo.</p>
+                    <div class="mini-tags-box"><span class="m-tag">AMAPÁ</span><span class="m-tag">RIO BRANCO</span></div>
+                </div>
+                <img src="img/brasil.png" alt="Domínio Brasileiro" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Período de Paz</h3>
+                <span class="date-tag">1815 – 1915</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Século de relativa prosperidade para Guiana e Suriname. Consolidação da identidade nacional, investimentos em educação e desenvolvimento urbano.</p>
+                    <div class="mini-tags-box"><span class="m-tag">GUIANA</span><span class="m-tag">SURINAME</span></div>
+                </div>
+                <img src="img/paz.png" alt="Paz" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>República das Águas</h3>
+                <span class="date-tag">1915 – 1930</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Venezuela anexa Essequibo em 1915. O restante da Guiana une-se ao Suriname em oposição à ocupação, mantendo resistência até a década de 30.</p>
+                    <div class="mini-tags-box">
+                        <span class="m-tag">BOLÍVAR</span><span class="m-tag">AMAZONAS</span><span class="m-tag">GUIANA</span><span class="m-tag">SURINAME</span>
+                    </div>
+                </div>
+                <img src="img/aguas.png" alt="República das Águas" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Domínio Alemão</h3>
+                <span class="date-tag">1919 – 1945</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Pelo Tratado de Brest-Tropicaux, a França cede Oiapoque à Alemanha (Guiana Alemã). Tentativas de germanização falharam devido à geografia e resistência local.</p>
+                    <div class="mini-tags-box"><span class="m-tag">OIAPOQUE</span></div>
+                </div>
+                <img src="img/alemanha.png" alt="Domínio Alemão" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Período de Transição</h3>
+                <span class="date-tag">1930 – 1932</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Guerra de Independência liderada pelo Suriname e regiões aliadas. A vitória resultou na unificação sob o nome de Federação das Guianas em 1932.</p>
+                    <div class="mini-tags-box"><span class="m-tag">GERAL</span></div>
+                </div>
+                <img src="img/transicao.png" alt="Transição" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>República das Bases</h3>
+                <span class="date-tag">1932 – 1960</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Fundação de Porto Courantyne em Baboon Island. Constituição de 1935 e incorporação de Amapá e Roraima após a Guerra Amazônica de 1937.</p>
+                    <div class="mini-tags-box"><span class="m-tag">GERAL</span></div>
+                </div>
+                <img src="img/bases.png" alt="República das Bases" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>República do Ouro e Petróleo</h3>
+                <span class="date-tag">1960 – 1985</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Incorporação do Oiapoque (1946). Boom econômico e instituição do sistema semipresidencialista na Constituição de 1979.</p>
+                    <div class="mini-tags-box"><span class="m-tag">GERAL</span></div>
+                </div>
+                <img src="img/ouro.png" alt="Ouro e Petróleo" class="history-img">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="period-header">
+                <h3>Nova República</h3>
+                <span class="date-tag">1985 – Atual</span>
+            </div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <p>Modernização e expansão. Constituição de 2025 formaliza Trombetas, Guayana e os distritos de Trindade e Tobago e Tigri. Modelo regional de sustentabilidade.</p>
+                    <div class="mini-tags-box"><span class="m-tag">GERAL</span></div>
+                </div>
+                <img src="img/nova.png" alt="Nova República" class="history-img">
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
