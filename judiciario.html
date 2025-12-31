@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poder Judiciário — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --azul-gov: #0a2e52;
+            --ouro-gov: #d4af37;
+        }
+
+        .tag-poder { background: var(--ouro-gov); color: white; padding: 6px 16px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* ALTA CORTE FEDERAL */
+
+        .intro-judiciario { text-align: center; margin-bottom: 60px; }
+        .tag-poder {
+            background: var(--ouro-gov);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .alta-corte-card {
+            background: var(--branco);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            border-top: 7px solid var(--ouro-gov);
+        }
+
+        .alta-corte-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+        }
+
+        .header-corte { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .titulo-corte { color: var(--azul-gov); font-size: 2rem; font-weight: 800; margin: 0; }
+        .badge-membros { background: var(--azul-gov); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; }
+
+        .texto-judiciario { font-family: 'Lora', serif; line-height: 1.8; color: var(--justica-cinza); font-size: 1.1rem; }
+
+        /* AS TRÊS CÂMARAS */
+        .camaras-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .camara-item {
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 15px;
+            border-top: 4px solid var(--ouro-gov);
+            transition: 0.3s;
+        }
+
+        .camara-item:hover { transform: translateY(-5px); background: #edf2f7; }
+        .camara-item h4 { color: var(--azul-gov); margin-top: 0; margin-bottom: 10px; font-size: 1rem; }
+        .camara-item p { font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0; }
+
+        /* REQUISITOS E REGRAS */
+        .requisitos-secao {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .bloco-regra {
+            background: var(--branco);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .bloco-regra h3 { color: var(--ouro-gov); font-size: 1rem; text-transform: uppercase; margin-bottom: 20px; }
+        .lista-regras { list-style: none; padding: 0; }
+        .lista-regras li { 
+            padding: 12px 0; 
+            border-bottom: 1px solid #f1f5f9; 
+            font-size: 0.9rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
+        }
+        .lista-regras li::before { content: "⚖️"; font-size: 0.8rem; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 900px) {
+            .camaras-grid, .requisitos-secao { grid-template-columns: 1fr; }
+            .header-corte { flex-direction: column; text-align: center; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html">EDUCAÇÃO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="intro-judiciario">
+        <span class="tag-poder">Governo</span>
+        <h2 style="font-size: 2.4rem; color: var(--azul-gov); font-weight: 800; margin-top: 15px;">Poder Judiciário Nacional</h2>
+    </div>
+    <section class="alta-corte-card">
+        <div class="header-corte">
+            <h3 class="titulo-corte">Alta Corte Federal</h3>
+            <span class="badge-membros">11 Membros Vitalícios</span>
+        </div>
+        
+        <div class="texto-judiciario">
+            A Alta Corte Federal é o órgão máximo do Poder Judiciário guianense. Incumbida de interpretar a Constituição, preservar a ordem federativa e garantir os direitos fundamentais. Atua como última instância de justiça e moderadora dos conflitos entre os entes da Federação.
+        </div>
+
+        <div class="camaras-grid">
+            <div class="camara-item">
+                <h4>Câmara Constitucional</h4>
+                <p>Julga ações de inconstitucionalidade e protege os princípios fundamentais da Carta de 2025.</p>
+            </div>
+            <div class="camara-item">
+                <h4>Câmara de Justiça</h4>
+                <p>Competente para temas cíveis, penais, administrativos e recursos de instâncias inferiores.</p>
+            </div>
+            <div class="camara-item">
+                <h4>Câmara Eleitoral</h4>
+                <p>Responsável pela jurisdição eleitoral, partidos políticos e validação do processo democrático.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="requisitos-secao">
+        <div class="bloco-regra">
+            <h3>Requisitos para Nomeação</h3>
+            <ul class="lista-regras">
+                <li>Nacionalidade Guianense Nata</li>
+                <li>Reputação Ilibada</li>
+                <li>Notório Saber Jurídico</li>
+                <li>Defesa da Democracia</li>
+            </ul>
+        </div>
+
+        <div class="bloco-regra">
+            <h3>Regras de Mandato</h3>
+            <ul class="lista-regras">
+                <li>Vitalício até a aposentadoria compulsória</li>
+                <li>Aposentadoria compulsória aos 70 anos</li>
+                <li>Indicação do Primeiro-Ministro</li>
+                <li>Aprovação pela Casa Alta (Zindas)</li>
+                <li>Nomeação pelo Presidente</li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
