@@ -1,0 +1,202 @@
+:root {
+    --azul: #0a2e52;
+    --vermelho: #8b0000;
+    --ouro: #d4af37;
+    --roxo: #4b0082;
+    --verde: #178921;
+    --fundo: #f0f2f5;
+    --branco: #ffffff;
+    --radius: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Montserrat', sans-serif; background: var(--fundo); color: #1a202c; overflow-x: hidden; }
+.container { width: 92%; max-width: 1200px; margin: 0 auto; }
+
+/* HEADER */
+header { background: var(--azul); color: white; padding: 1rem 0; border-bottom: 4px solid var(--ouro); position: sticky; top: 0; z-index: 1000; }
+.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; align-items: center; gap: 15px; }
+.brand img { height: 50px; }
+.brand-text h1 { font-size: 1.1rem; font-weight: 800; line-height: 1; }
+.lema-topo { font-size: 0.6rem; color: var(--ouro); font-weight: 700; letter-spacing: 2px; }
+.nav-menu { display: flex; gap: 1rem; }
+.nav-menu a { color: white; text-decoration: none; font-size: 0.7rem; font-weight: 700; }
+
+/* HERO E FICHA TÉCNICA (6 QUADRADOS + BARRA) */
+.hero-section { background: white; padding: 3rem 0; border-bottom: 1px solid #ddd; }
+.hero-layout { display: flex; flex-wrap: wrap; gap: 2rem; }
+.hero-main-text { flex: 1; min-width: 300px; text-align: left; }
+.hero-main-text h2 { font-size: 2.5rem; color: var(--azul); }
+
+.data-wrapper { flex: 1.5; display: flex; flex-direction: column; gap: 10px; min-width: 320px; }
+.data-grid-six { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.data-sq { 
+    background: #f8f9fa; border: 1px solid #e2e8f0; padding: 12px; 
+    border-radius: 8px; text-align: center; min-height: 75px;
+    display: flex; flex-direction: column; justify-content: center;
+}
+.data-sq span { font-size: 0.55rem; color: #718096; font-weight: 700; display: block; margin-bottom: 4px; }
+.data-sq strong { font-size: 0.75rem; color: var(--azul); line-height: 1.2; }
+
+.data-footer-bar {
+    background: var(--azul); color: white; padding: 12px 20px; 
+    border-radius: 8px; display: flex; justify-content: space-between; font-size: 0.75rem;
+}
+
+/* SEÇÃO DE LÍDERES */
+.leadership-section { padding: 3rem 0; }
+.section-title { margin-bottom: 1.5rem; font-size: 1.1rem; border-left: 5px solid var(--ouro); padding-left: 10px; }
+.leaders-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.leader-card { background: white; padding: 1.5rem; border-radius: var(--radius); border-top: 5px solid var(--azul); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.leader-card small { font-size: 0.7rem; color: #718096; font-weight: 600; display: block; margin-bottom: 5px; }
+.leader-card strong { font-size: 1.1rem; color: var(--azul); }
+
+/* CARDS DE CONTEÚDO */
+.main-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 1.5rem 0 3rem; }
+.card-destaque { background: white; padding: 2rem; border-radius: var(--radius); text-align: left; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; }
+.full-width { grid-column: 1 / -1; width: 100%; }
+
+.border-azul { border-left: 8px solid var(--azul); }
+.border-vermelho { border-left: 8px solid var(--vermelho); }
+.border-roxo { border-left: 8px solid var(--roxo); }
+.border-dourado { border-left: 8px solid var(--ouro); }
+.border-verde { border-left: 8px solid var(--verde); }
+
+.tag { font-size: 0.6rem; font-weight: 800; color: white; padding: 4px 8px; border-radius: 4px; margin-bottom: 1rem; display: inline-block; }
+.tag.azul { background: var(--azul); }
+.tag.vermelho { background: var(--vermelho); }
+.tag.roxo { background: var(--roxo); }
+.tag.dourado { background: var(--ouro); }
+.tag.verde { background: var(--verde); }
+
+.btn { display: inline-block; margin-top: 1rem; background: var(--azul); color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.75rem; }
+
+.cambio-widget {
+    background: #090e1a;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 24px;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* Botões Estilo Painel de Controle */
+.periodo-tabs {
+    display: flex;
+    background: #161d2b;
+    padding: 4px;
+    border-radius: 8px;
+    gap: 2px;
+    margin-bottom: 25px; /* Espaço para não grudar */
+}
+
+.tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #64748b;
+    padding: 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    background: #1e293b;
+    color: #00ff41;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.valor-principal {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+/* Gráfico Fluorescente e Realista */
+.view-container {
+    height: 160px;
+    width: 100%;
+    position: relative;
+    background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+    background-size: 100% 32px, 20% 100%;
+    margin-top: 10px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.linha-grafico {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid #00ff41; /* Verde Matrix/Neon */
+    filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.8));
+    background: linear-gradient(to top, rgba(0, 255, 65, 0.1), transparent);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* Tooltip Dourada */
+.segmento-hover {
+    flex: 1;
+    position: relative;
+    cursor: crosshair;
+    z-index: 20;
+}
+
+.segmento-hover::after {
+    content: attr(data-preço);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f1c40f;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.segmento-hover:hover { background: rgba(0, 255, 65, 0.03); border-right: 1px dashed rgba(0, 255, 65, 0.2); }
+.segmento-hover:hover::after { opacity: 1; top: -50px; }
+
+.legendas-tempo {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    color: #475569;
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+/* RODAPÉ (GOV STYLE) */
+.gov-footer { background: #111827; color: #f3f4f6; padding: 5rem 0 2rem; margin-top: 5rem; border-top: 8px solid var(--ouro); }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
+.brand-col strong { font-size: 1.2rem; color: var(--ouro); display: block; margin: 10px 0; }
+.footer-logo-grey { height: 70px; filter: grayscale(1) brightness(2); opacity: 0.3; }
+.footer-column h4 { font-size: 0.8rem; color: white; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+.footer-column a { display: block; color: #9ca3af; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.8rem; }
+.footer-bottom { border-top: 1px solid #374151; padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.copyright-area { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: #6b7280; }
+.copyright-icon { border: 1px solid #6b7280; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+
+/* RESPONSIVIDADE */
+@media (max-width: 950px) {
+    .data-grid-six { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .leaders-grid, .jump-to-one { grid-template-columns: 1fr; }
+    .header-flex { flex-direction: column; gap: 1rem; }
+    .data-footer-bar { flex-direction: column; gap: 5px; text-align: center; }
+}
