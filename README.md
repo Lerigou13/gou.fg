@@ -17,7 +17,7 @@ O projeto foi desenvolvido para refletir a nova estrutura constitucional de 2025
 
 ## 🏛️ Estrutura do Governo
 
-### 📄 [Constituições](legislacao.html)
+### 📄 [Constituições](constituicao.html)
 Sistema dinâmico que permite alternar entre os textos históricos e o atual:
 * **2025:** A Nova Era (Atual)
 * **1979:** A Transição Semipresidencialista
@@ -40,6 +40,14 @@ Detalhamento do sistema **Tricameral**:
 ### ⚖️ [Poder Judiciário](judiciario.html)
 Exposição da **Alta Corte Federal** e suas três câmaras especializadas (Constitucional, Justiça e Eleitoral).
 
-## 🚀 Como visualizar
+---
 
+## 🎨 Características do Design
+- **Não-Quadrado:** Uso de bordas arredondadas suaves (`20px`) e sombras de profundidade.
+- **Identidade Visual:** Cores baseadas no Azul Profundo (`#0a2e52`) e Ouro (`#867441`).
+- **Responsividade Total:** Adaptado para dispositivos móveis, tablets e desktop.
+
+---
+
+## 🚀 Como visualizar
 1. Acesse [https://lerigou13.github.io/Federacao-das-Guianas/](https://lerigou13.github.io/Federacao-das-Guianas/)

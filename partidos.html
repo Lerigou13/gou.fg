@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partidos Políticos — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .titulo-destaque {
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: #1a202c;
+            padding-left: 15px;
+            border-left: 6px solid #d4af37;
+            margin: 40px 0 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        /* GRID DE PARTIDOS: 2 colunas no Desktop */
+        .grid-partidos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .card-partido-v2 {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--azul);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+        }
+
+        /* COLUNA: Ficha Técnica */
+        .col-info-partido {
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* COLUNA: Logo + Contexto */
+        .col-visual-contexto {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+        }
+
+        /* ESTILO DAS INFOS */
+        .col-info-partido h3 { 
+            font-size: 1rem; 
+            color: var(--azul); 
+            margin-bottom: 15px; 
+            text-transform: uppercase; 
+            border-bottom: 2px solid var(--ouro); 
+            display: inline-block;
+            font-weight: 800; 
+        }
+
+        .ficha-line { display: flex; flex-direction: column; padding: 7px 0; border-bottom: 1px solid #e9ecef; }
+        .ficha-line span { color: var(--ouro); font-weight: 800; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .ficha-line strong { color: #333; font-size: 0.8rem; margin-top: 2px; line-height: 1.3; }
+
+        .cor-tag { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+        .cor-square { width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.1); }
+
+        /* ESTILO DA LOGO E TEXTO */
+        .container-logo { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+        .container-logo img {
+            width: 100%;
+            max-width: 390px;
+            max-height: 200px;
+            object-fit: contain;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            background: #fff;
+        }
+
+        .texto-historico {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        /* --- RESPONSIVIDADE (O PONTO CHAVE) --- */
+        
+        @media (max-width: 1100px) {
+            .grid-partidos { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .card-partido-v2 { 
+                grid-template-columns: 1fr; /* Vira uma coluna única */
+            }
+
+            /* No celular, invertemos a ordem dos blocos */
+            .col-info-partido { 
+                order: 2; /* Fica no meio */
+                border-right: none;
+                border-top: 1px solid #eee;
+            }
+
+            .col-visual-contexto { 
+                order: 1; /* Fica no topo (Logo) */
+                padding-bottom: 10px;
+            }
+
+            /* No mobile, o contexto deve ficar embaixo das informações */
+            /* Para isso, separamos o contexto da logo visualmente */
+            .texto-historico {
+                order: 3; /* Vai para o final do card */
+                padding: 20px;
+                background: #fff;
+            }
+            
+            /* Ajuste técnico para o contexto descer no mobile */
+            .col-visual-contexto { display: contents; } 
+            .container-logo { order: 1; padding: 30px; background: #fff; margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="territorio.html">TERRITÓRIO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section style="padding: 40px 0;">
+        <div class="tag dourado">IDENTIDADE</div>
+        <h2>Partidos Políticos</h2>
+        <p style="color: #666; margin-top: 10px;">Conheça as agremiações partidárias que compõem o cenário democrático da Federação.</p>
+        
+        <h2 class="titulo-destaque">Legendas Ativas</h2>
+        
+        <div class="grid-partidos">
+
+            <article class="card-partido-v2" style="border-top-color: #ff0000;">
+                <div class="col-info-partido">
+                    <h3>FTG</h3>
+                    <div class="ficha-line"><span>Nome</span><strong>Frente Trabalhista das Guianas</strong></div>
+                    <div class="ficha-line"><span>Ideologia</span><strong>Centro-esquerda, social-democracia, justiça social</strong></div>
+                    <div class="ficha-line"><span>Base</span><strong>Trabalhadores urbanos, professores, sindicalistas</strong></div>
+                    <div class="ficha-line"><span>Símbolo</span><strong>Rosa</strong></div>
+                    <div class="ficha-line"><span>Cor</span><div class="cor-tag"><div class="cor-square" style="background: #ff0000;"></div><strong>Vermelho</strong></div></div>
+                </div>
+                <div class="col-visual-contexto">
+                    <div class="container-logo"><img src="img/partidos/ftg.png" alt="Logo FTG"></div>
+                    <div class="texto-historico">
+                        <h4>Contexto Histórico</h4>
+                        <p>Surgiu no pós-guerra como alternativa popular. Governou na década de 50 e foi oposição moderada na República do Ouro e Petróleo.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-partido-v2" style="border-top-color: #008000;">
+                <div class="col-info-partido">
+                    <h3>PVG</h3>
+                    <div class="ficha-line"><span>Nome</span><strong>Partido Verde das Guianas</strong></div>
+                    <div class="ficha-line"><span>Ideologia</span><strong>Ambientalismo, direitos indígenas, desenvolvimento sustentável</strong></div>
+                    <div class="ficha-line"><span>Base</span><strong>Povos tradicionais, ONGs, juventude urbana</strong></div>
+                    <div class="ficha-line"><span>Símbolo</span><strong>Folhas</strong></div>
+                    <div class="ficha-line"><span>Cor</span><div class="cor-tag"><div class="cor-square" style="background: #008000;"></div><strong>Verde</strong></div></div>
+                </div>
+                <div class="col-visual-contexto">
+                    <div class="container-logo"><img src="img/partidos/pvg.png" alt="Logo PVG"></div>
+                    <div class="texto-historico">
+                        <h4>Contexto Histórico</h4>
+                        <p>Vanguarda na proteção da Amazônia. É a voz política das comunidades tradicionais e peça-chave nas leis de sustentabilidade.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-partido-v2" style="border-top-color: #ff8c00;">
+                <div class="col-info-partido">
+                    <h3>UPG</h3>
+                    <div class="ficha-line"><span>Nome</span><strong>União Popular das Guianas</strong></div>
+                    <div class="ficha-line"><span>Ideologia</span><strong>Esquerda radical, coletivismo, anti-imperialismo</strong></div>
+                    <div class="ficha-line"><span>Base</span><strong>Intelectuais, moradores da zona rural, camponeses</strong></div>
+                    <div class="ficha-line"><span>Símbolo</span><strong>Sol</strong></div>
+                    <div class="ficha-line"><span>Cor</span><div class="cor-tag"><div class="cor-square" style="background: #ff8c00;"></div><strong>Laranja</strong></div></div>
+                </div>
+                <div class="col-visual-contexto">
+                    <div class="container-logo"><img src="img/partidos/upg.png" alt="Logo UPG"></div>
+                    <div class="texto-historico">
+                        <h4>Contexto Histórico</h4>
+                        <p>Fruto dos debates de 1979, defende a reforma agrária radical. Possui forte influência nos estados rurais do sul e oeste.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-partido-v2" style="border-top-color: #0000ff;">
+                <div class="col-info-partido">
+                    <h3>PUN</h3>
+                    <div class="ficha-line"><span>Nome</span><strong>Partido da Unidade Nacional</strong></div>
+                    <div class="ficha-line"><span>Ideologia</span><strong>Nacionalismo moderado, Centralismo democrático, Integração</strong></div>
+                    <div class="ficha-line"><span>Base</span><strong>Capital federal, Elite burocrática, Tecnocratas</strong></div>
+                    <div class="ficha-line"><span>Símbolo</span><strong>Pássaro</strong></div>
+                    <div class="ficha-line"><span>Cor</span><div class="cor-tag"><div class="cor-square" style="background: #0000ff;"></div><strong>Azul</strong></div></div>
+                </div>
+                <div class="col-visual-contexto">
+                    <div class="container-logo"><img src="img/partidos/pun.png" alt="Logo PUN"></div>
+                    <div class="texto-historico">
+                        <h4>Contexto Histórico</h4>
+                        <p>Fundador institucional da Federação em 1932. Consolidou a identidade nacional e o fortalecimento do Estado Federal.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-partido-v2" style="border-top-color: #800080;">
+                <div class="col-info-partido">
+                    <h3>PCL</h3>
+                    <div class="ficha-line"><span>Nome</span><strong>Partido Cívico Liberal</strong></div>
+                    <div class="ficha-line"><span>Ideologia</span><strong>Liberalismo clássico, economia de mercado, direitos civis</strong></div>
+                    <div class="ficha-line"><span>Base</span><strong>Empresariado, profissionais liberais, classe média</strong></div>
+                    <div class="ficha-line"><span>Símbolo</span><strong>Livro</strong></div>
+                    <div class="ficha-line"><span>Cor</span><div class="cor-tag"><div class="cor-square" style="background: #800080;"></div><strong>Roxo</strong></div></div>
+                </div>
+                <div class="col-visual-contexto">
+                    <div class="container-logo"><img src="img/partidos/pcl.png" alt="Logo PCL"></div>
+                    <div class="texto-historico">
+                        <h4>Contexto Histórico</h4>
+                        <p>Nascido na abertura dos anos 80, defende o livre mercado e a transparência. Atua como moderador em coalizões.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-partido-v2" style="border-top-color: #ffff00;">
+                <div class="col-info-partido">
+                    <h3>PFG</h3>
+                    <div class="ficha-line"><span>Nome</span><strong>Partido Federalista das Guianas</strong></div>
+                    <div class="ficha-line"><span>Ideologia</span><strong>Federalismo, descentralização administrativa, regionalismo</strong></div>
+                    <div class="ficha-line"><span>Base</span><strong>Governadores, políticos estaduais, elite agrária</strong></div>
+                    <div class="ficha-line"><span>Símbolo</span><strong>Torre</strong></div>
+                    <div class="ficha-line"><span>Cor</span><div class="cor-tag"><div class="cor-square" style="background: #ffff00;"></div><strong>Amarelo</strong></div></div>
+                </div>
+                <div class="col-visual-contexto">
+                    <div class="container-logo"><img src="img/partidos/pfg.png" alt="Logo PFG"></div>
+                    <div class="texto-historico">
+                        <h4>Contexto Histórico</h4>
+                        <p>Maior defensor da autonomia estadual contra o centralismo da capital. Foca no controle regional de recursos naturais.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-partido-v2" style="border-top-color: #000000;">
+                <div class="col-info-partido">
+                    <h3>MPN</h3>
+                    <div class="ficha-line"><span>Nome</span><strong>Movimento Popular Nacionalista</strong></div>
+                    <div class="ficha-line"><span>Ideologia</span><strong>Nacionalismo forte, segurança, controle estatal estratégico</strong></div>
+                    <div class="ficha-line"><span>Base</span><strong>Militares, industriais, setores conservadores</strong></div>
+                    <div class="ficha-line"><span>Símbolo</span><strong>Escudo</strong></div>
+                    <div class="ficha-line"><span>Cor</span><div class="cor-tag"><div class="cor-square" style="background: #000000;"></div><strong>Preto</strong></div></div>
+                </div>
+                <div class="col-visual-contexto">
+                    <div class="container-logo"><img src="img/partidos/mpn.png" alt="Logo MPN"></div>
+                    <div class="texto-historico">
+                        <h4>Contexto Histórico</h4>
+                        <p>Ascendeu na República do Ouro e Petróleo. Defende o controle estatal de setores vitais e a ordem administrativa rigorosa.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-partido-v2" style="border-top-color: #40e0d0;">
+                <div class="col-info-partido">
+                    <h3>MCJ</h3>
+                    <div class="ficha-line"><span>Nome</span><strong>Movimento Cívico Juvenil</strong></div>
+                    <div class="ficha-line"><span>Ideologia</span><strong>Anti-corrupção, meritocracia, transparência radical</strong></div>
+                    <div class="ficha-line"><span>Base</span><strong>Estudantes, universitários, jovens profissionais</strong></div>
+                    <div class="ficha-line"><span>Símbolo</span><strong>Ampulheta</strong></div>
+                    <div class="ficha-line"><span>Cor</span><div class="cor-tag"><div class="cor-square" style="background: #40e0d0;"></div><strong>Turquesa</strong></div></div>
+                </div>
+                <div class="col-visual-contexto">
+                    <div class="container-logo"><img src="img/partidos/mcj.png" alt="Logo MCJ"></div>
+                    <div class="texto-historico">
+                        <h4>Contexto Histórico</h4>
+                        <p>Nova força política (2025). Utiliza mobilização digital para desafiar a elite tradicional e foca na moralidade pública.</p>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+</main>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

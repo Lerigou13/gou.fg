@@ -61,7 +61,7 @@
 
         .cargo-label { font-weight: 800; color: var(--ouro-gov); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
         .nome-autoridade { display: block; font-size: 1.8rem; color: var(--azul-gov); font-weight: 800; margin: 10px 0 20px; }
-        .desc-atribuicoes { font-family: 'Lora', serif; line-height: 1.8; color: #475569; }
+        .desc-atribuicoes { line-height: 1.8; color: #475569; }
 
         .copyright {
             text-align: center;
@@ -98,9 +98,10 @@
 </header>
 
 <main class="container">
-    <section class="executivo-intro">
-        <span class="tag-poder">Governo</span>
-        <h2>Poder Executivo Federal</h2>
+    <section style="padding: 40px 0 20px 0;">
+        <div class="tag vermelho">GOVERNO</div>
+        <h2 class="titulo-destaque">Poder Executivo Federal</h2>
+        <p style="color: #666;">Entenda o funcionamento da State House e as funções do Presidente, Vice-Presidente e Primeiro-Ministro.</p>
     </section>
 
     <section class="state-house-section" style="grid-column: 1 / -1; margin-top: 50px;">
@@ -108,7 +109,7 @@
                 <div style="max-width: 800px;">
                     <span class="tag-poder" style="background: var(--ouro-gov); margin-bottom: 20px;">Palácio Presidencial</span>
                     <h2 style="font-size: 2.2rem; color: white; margin: 10px 0;">State House</h2>
-                    <p style="font-family: 'Lora', serif; font-size: 1.1rem; line-height: 1.8; opacity: 0.9;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.9;">
                         Localizada em Porto Courantyne, a <b>State House</b> é a sede oficial do Poder Executivo da Federação das Guianas. O edifício histórico abriga o Gabinete do Presidente e é o palco das grandes recepções diplomáticas e cerimônias de Estado. É o símbolo da estabilidade democrática e da soberania nacional da Federação.
                     </p>
                     <div style="display: flex; gap: 20px; margin-top: 30px;">
@@ -131,18 +132,18 @@
         </div>
 
         <div class="card-lider">
-            <span class="cargo-label">Oniem Miniser de Federacion de Guianas</span>
-            <span class="nome-autoridade">Omar Xavier Hoetmer</span>
-            <div class="desc-atribuicoes">
-                Exerce a Chefia de Governo. Responsável pela coordenação do Gabinete Ministerial, gestão do orçamento federal e execução das políticas públicas internas e econômicas.
-            </div>
-        </div>
-
-        <div class="card-lider">
             <span class="cargo-label">Vais-Cheff Pays de Federacion de Guianas</span>
             <span class="nome-autoridade">Lígia dos Santos</span>
             <div class="desc-atribuicoes">
                 Substituta imediata do Chefe de Estado em casos de vacância ou impedimento. Atua na coordenação das relações institucionais entre o Executivo e os Estados da Federação.
+            </div>
+        </div>
+        
+        <div class="card-lider">
+            <span class="cargo-label">Oniem Miniser de Federacion de Guianas</span>
+            <span class="nome-autoridade">Omar Xavier Hoetmer</span>
+            <div class="desc-atribuicoes">
+                Exerce a Chefia de Governo. Responsável pela coordenação do Gabinete Ministerial, gestão do orçamento federal e execução das políticas públicas internas e econômicas.
             </div>
         </div>
     </section>

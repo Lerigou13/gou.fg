@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geopolítica Mundial — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* GRID PRINCIPAL */
+        .world-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            margin: 40px 0;
+        }
+
+        .continent-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; /* Lado Esquerdo: Mapa | Lado Direito: Texto */
+            overflow: hidden;
+            border: 1px solid #eee;
+            min-height: 400px;
+        }
+
+        /* Inverter a ordem em cards alternados para dinâmica visual */
+        .continent-card.reverse {
+            grid-template-columns: 1.2fr 1fr;
+        }
+        .continent-card.reverse .continent-map { order: 2; }
+        .continent-card.reverse .continent-info { order: 1; }
+
+        .continent-map {
+            background: #f4f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .continent-map img {
+            width: 100%;
+            max-width: 600px;
+            height: auto; 
+            object-fit: contain;
+            border-radius: 12px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+
+        /* ÁREA DO TEXTO */
+        .continent-info {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .continent-info h3 {
+            color: var(--azul);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            border-left: 6px solid var(--ouro);
+            padding-left: 15px;
+            font-weight: 800;
+        }
+
+        .summary-content {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+        }
+
+        .summary-content p {
+            margin-bottom: 15px;
+        }
+
+        /* RESPONSIVIDADE (MOBILE) */
+        @media (max-width: 992px) {
+            .continent-card, .continent-card.reverse {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .continent-info {
+                order: 2 !important; /* Texto sempre depois no mobile */
+                padding: 25px;
+            }
+
+            .continent-map {
+                padding: 10px; /* Quase sem borda no mobile para o mapa brilhar */
+            }
+
+            .continent-map img {
+                max-width: 500px; /* No celular, o limite é a largura da tela */
+                max-height: none; /* Deixa a altura livre para não achatar */
+                border-radius: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html">EDUCAÇÃO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section style="padding: 40px 0;">
+        <div class="tag azul">TERRITÓRIO</div>
+        <h2>Geopolítica Mundial</h2>
+        <p style="color: #666;">Relatório estratégico sobre as transformações territoriais e políticas globais.</p>
+
+        <div class="world-grid">
+            
+            <article class="continent-card">
+                <div class="continent-map">
+                    <img src="img/americas.png" alt="Mapa das Américas">
+                </div>
+                <div class="continent-info">
+                    <h3>Américas</h3>
+                    <div class="summary-content">
+                        <p>O período pós-Segunda Guerra foi marcado pela hegemonia dos EUA como superpotência. Na América do Sul, a <strong>Federação das Guianas (FG)</strong> liderou mudanças profundas após a Guerra Amazônica de 1937.</p>
+                        <p>A ascensão do MPN nos anos 60 impulsionou a expansão, resultando na anexação de Trindade e Tobago (2021) e na criação do estado de Trombetas (2022). A Venezuela foi absorvida pela Colômbia e o Brasil recuou para o Centro-Sul após perdas territoriais.</p>
+                    </div>
+                </div>
+            </article>
+            
+
+            <article class="continent-card reverse">
+                <div class="continent-map">
+                    <img src="img/europa.png" alt="Mapa da Europa">
+                </div>
+                <div class="continent-info">
+                    <h3>Europa</h3>
+                    <div class="summary-content">
+                        <p>Dominada pelo legado da Guerra, com foco na derrota da Itália. O país foi dividido ideologicamente entre Norte (EUA/UK) e Sul (URSS).</p>
+                        <p>A Alemanha manteve sua unidade e a Alsácia-Lorena, focando na indústria. No Leste, o colapso tardio da URSS (c. 1995) gerou uma Rússia independente e estados unificados no Báltico. A Polônia permanece reduzida, sob influência alemã ao oeste.</p>
+                    </div>
+                </div>
+            </article>
+            
+
+            <article class="continent-card">
+                <div class="continent-map">
+                    <img src="img/asia.png" alt="Mapa da Ásia">
+                </div>
+                <div class="continent-info">
+                    <h3>Ásia</h3>
+                    <div class="summary-content">
+                        <p>Foco da contenção ideológica. A Coreia emergiu unificada, enquanto o Vietnã foi o palco principal da Guerra Fria, dividido entre Norte e Sul. A China consolidou-se como potência soberana.</p>
+                        <p>Com o fim da URSS, a Ásia Central ganhou independência. No Oriente Médio, a rivalidade entre EUA e potências regionais define o cenário, com micro-nações sendo absorvidas por vizinhos maiores.</p>
+                    </div>
+                </div>
+            </article>
+            
+
+            <article class="continent-card reverse">
+                <div class="continent-map">
+                    <img src="img/africa.png" alt="Mapa da África">
+                </div>
+                <div class="continent-info">
+                    <h3>África</h3>
+                    <div class="summary-content">
+                        <p>Descolonização acelerada nas décadas de 40 e 50. Apesar da independência precoce, as fronteiras coloniais arbitrárias foram mantidas, preservando o mapa territorial clássico.</p>
+                        <p>A competição da Guerra Fria e a busca por recursos minerais geraram instabilidade interna, mantendo o continente sob forte pressão de neocolonialismo econômico em 2025.</p>
+                    </div>
+                </div>
+            </article>
+            
+
+            <article class="continent-card">
+                <div class="continent-map">
+                    <img src="img/oceania.png" alt="Mapa da Oceania">
+                </div>
+                <div class="continent-info">
+                    <h3>Oceania</h3>
+                    <div class="summary-content">
+                        <p>Região alinhada aos EUA e liderada por Austrália e Nova Zelândia. Para resistir à influência chinesa, as micro-nações não ganharam independência isolada.</p>
+                        <p>O cenário é definido por grandes blocos regionais federados: <strong>Polinésia, Micronésia e Melanésia</strong>, garantindo estabilidade geopolítica e força diplomática no Pacífico.</p>
+                    </div>
+                </div>
+            </article>
+            
+
+        </div>
+    </section>
+</main>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>
