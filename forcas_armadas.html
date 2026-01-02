@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forças Armadas — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lora:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --azul-gov: #0a2e52;
+            --ouro-gov: #d4af37;
+            --verde-gov: #178921;
+            --vermelho-gov: #8b0000;
+            --cinza-claro: #f4f7f9;
+        }
+
+        .militar-hero {
+            background: var(--azul-gov);
+            border-radius: 20px;
+            padding: 60px;
+            color: white;
+            border: 1px solid var(--ouro-gov);
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .tag-militar {
+            background: var(--verde-gov);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .secao-forcas { margin: 60px 0; }
+
+        .card-forca {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 350px 1fr; 
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .foto-forca {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-right: 8px solid var(--azul-gov);
+        }
+
+        .img-armee { border-right-color: var(--verde-gov); }
+        .img-flotte { border-right-color: var(--azul-gov); }
+        .img-aeropuvoir { border-right-color: var(--vermelho-gov); }
+
+        .conteudo-forca {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .identificacao-forca h2 {
+            font-size: 1.8rem;
+            color: var(--azul-gov);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .nome-nativo {
+            font-style: italic;
+            color: #64748b;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .sigla-forca {
+            font-weight: 800;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .desc-forca p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #475569;
+            text-align: justify;
+            margin: 0;
+        }
+
+        @media (max-width: 750px) {
+            .card-forca { grid-template-columns: 1fr; }
+            .foto-forca { height: 250px; border-right: none; border-bottom: 8px solid var(--azul-gov); }
+            .conteudo-forca { padding: 30px; }
+            .img-armee { border-bottom-color: var(--verde-gov); }
+            .img-flotte { border-bottom-color: var(--azul-gov); }
+            .img-aeropuvoir { border-bottom-color: var(--vermelho-gov); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html" class="active">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html">EDUCAÇÃO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section style="padding: 40px 0 20px 0;">
+        <div class="tag verde">OUTROS</div>
+        <h2 class="titulo-destaque">Forças Armadas</h2>
+        <p style="color: #666;">Conheça a Armee, a Flotte e a AeroPuvoir.</p>
+    </section>
+    <section class="militar-hero">
+        <span class="tag-militar">Soberania e Defesa</span>
+        <h1 style="font-size: 2.5rem; margin-bottom: 15px;">Forças Armadas da Federação</h1>
+        <p style="max-width: 800px; opacity: 0.9;">Proteger a terra, as águas e o céu da nossa união.</p>
+    </section>
+
+    <section class="secao-forcas">
+        
+        <div class="card-forca">
+            <img src="img/armee.jpg" alt="Soldado da Armee" class="foto-forca img-armee">
+            <div class="conteudo-forca">
+                <div class="identificacao-forca">
+                    <h2>Armee</h2>
+                    <span class="nome-nativo">Puvoirkisu de Terre lo Jungle</span>
+                    <span class="sigla-forca" style="background: var(--verde-gov);">FTF (Forças da Terra e Floresta)</span>
+                </div>
+                <div class="desc-forca">
+                    <p>
+                        A Armee é o braço de elite da Federação. Sua doutrina de combate é baseada na Guerra na Selva, protegendo as fronteiras terrestres. Especialista em contrainsurgência e patrulha de longo alcance, garante a segurança de infraestruturas críticas terrestres, assegurando que a Floresta da Federação permaneça inviolável.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-forca">
+            <img src="img/flotte.jpg" alt="Marinheiro da Flotte" class="foto-forca img-flotte">
+            <div class="conteudo-forca">
+                <div class="identificacao-forca">
+                    <h2>Flotte</h2>
+                    <span class="nome-nativo">Puvoirkisu de Mer lo Rive</span>
+                    <span class="sigla-forca" style="background: var(--azul-gov);">FMR (Forças do Mar e Rios)</span>
+                </div>
+                <div class="desc-forca">
+                    <p>
+                        A Flotte garante o controle das Águas Fluviais (Orinoco e Amazonas) e Marítimas. Mantém uma poderosa frota fluvial para acesso ao interior e atua na defesa costeira do Caribe, protegendo plataformas de petróleo e os distritos insulares de Trindade e Tobago.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-forca">
+            <img src="img/aeropuvoir.jpg" alt="Piloto AeroPuvoir" class="foto-forca img-aeropuvoir">
+            <div class="conteudo-forca">
+                <div class="identificacao-forca">
+                    <h2>AeroPuvoir</h2>
+                    <span class="nome-nativo">Puvoirkisu de Totale Ciel</span>
+                    <span class="sigla-forca" style="background: var(--vermelho-gov);">FTC (Forças de Todo Céu)</span>
+                </div>
+                <div class="desc-forca">
+                    <p>
+                        O AeroPuvoir foca na "Vigil de Ciel" (Vigia do Céu) sobre a Amazônia. Utiliza tecnologia avançada de reconhecimento para monitorar a exploração ilegal de recursos e o desmatamento, além de garantir o transporte rápido de tropas para as áreas mais remotas da selva.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
