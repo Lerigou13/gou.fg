@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INEG — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --ouro: #d4af37;
+            --azul-gov: #0a2e52;
+            --voto-sim: #2b8a3e;    
+            --voto-nao: #bc2a3a;    
+            --voto-neutro: #6c757d; 
+            --voto-extra: #1971c2;  
+            --cor-bg-tooltip: rgba(17, 24, 39, 0.95);
+        }
+
+        .titulo-destaque {
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: #1a202c;
+            padding-left: 15px;
+            border-left: 6px solid #d4af37;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tabela-wrapper { border: 1px solid #e9ecef; border-radius: 8px; overflow: hidden; margin-bottom: 50px; }
+        .ineg-table { width: 100%; border-collapse: collapse; }
+        .ineg-table td { padding: 25px; border-bottom: 1px solid #f1f3f5; vertical-align: top; }
+        .ano-col { width: 80px; font-weight: 900; color: #ced4da; font-size: 1.2rem; }
+        .row-main .ano-col { color: var(--ouro); }
+        .row-hidden { display: none; }
+
+        .voto-bar-container {
+            width: 100%; height: 14px; background: #e9ecef; 
+            border-radius: 50px; 
+            display: flex; overflow: visible; margin: 15px 0; position: relative;
+        }
+        
+        .voto-segmento {
+            height: 100%; position: relative; cursor: pointer; 
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .voto-segmento:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+        .voto-segmento:last-child { border-top-right-radius: 50px; border-bottom-right-radius: 50px; }
+
+        .voto-segmento:hover {
+            transform: scaleY(1.3);
+            filter: brightness(1.15);
+            z-index: 10;
+        }
+
+        .voto-segmento::after {
+            content: attr(data-pct);
+            position: absolute; 
+            top: -38px; 
+            left: 50%; 
+            transform: translateX(-50%);
+            background: var(--cor-bg-tooltip); 
+            color: #fff; 
+            padding: 5px 10px;
+            border-radius: 6px; 
+            font-size: 0.75rem; 
+            font-weight: 800;
+            white-space: nowrap; 
+            opacity: 0; 
+            pointer-events: none; 
+            transition: opacity 0.2s, top 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .voto-segmento:hover::after { opacity: 1; top: -45px; }
+
+        .voto-segmento::before {
+            content: '';
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+            border: 6px solid transparent; border-top-color: var(--cor-bg-tooltip);
+            opacity: 0; transition: opacity 0.2s;
+        }
+        .voto-segmento:hover::before { opacity: 1; }
+
+        .legenda-votos { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; }
+        .legenda-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 700; color: #495057; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+        .desfecho-badge {
+            display: inline-block; padding: 6px 14px; border-radius: 6px;
+            font-size: 0.65rem; font-weight: 800; text-transform: uppercase;
+            margin-top: 12px; border: 2px solid transparent;
+        }
+        .badge-sucesso { background: #ebfbee; color: #2b8a3e; border-color: #d3f9d8; }
+        .badge-erro { background: #fff5f5; color: #c92a2a; border-color: #ffe3e3; }
+        .badge-neutro { background: #f8f9fa; color: #495057; border-color: #e9ecef; }
+        .badge-guerra { background: #fff9db; color: #e67700; border-color: #ffec99; } /* Para 1937 */
+
+        .btn-container {
+            border-top: 1px solid #f1f3f5;
+            background: #fdfdfd;
+            transition: 0.3s;
+        }
+
+        .btn-toggle {
+            width: 100%; 
+            padding: 18px;
+            background: none;
+            border: none;
+            color: var(--azul-gov);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+
+        .btn-toggle:hover {
+            background: #f8fafc;
+            color: var(--ouro);
+        }
+
+        .seta {
+            border: solid currentColor;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+            transition: transform 0.3s;
+        }
+
+        .seta-baixo { transform: rotate(45deg); }
+        .seta-cima { transform: rotate(-135deg); }
+
+        .map-card { border: 1px solid #e9ecef; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 25px; background: #fff; }
+        .map-card img {
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            margin: 15px auto;
+            display: block;
+            border-radius: 12px;
+            border: 1px solid #e9ecef; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .map-card:hover img {
+            transform: scale(1.02);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .grid-7 .map-card:last-child img, 
+        .map-card:first-child img {
+            max-width: 550px; 
+        }
+
+        .map-grid { 
+            display: grid; 
+            grid-template-columns: 1fr;
+            gap: 20px; 
+        }
+
+        .grid-7 { 
+            display: grid; 
+            grid-template-columns: 1fr;
+            gap: 15px; 
+        }
+
+        @media (min-width: 600px) {
+            .map-grid { grid-template-columns: repeat(2, 1fr); }
+            .grid-7 { grid-template-columns: repeat(2, 1fr); }
+            .grid-7 .map-card:last-child { grid-column: span 2; }
+        }
+
+        @media (min-width: 900px) {
+            .grid-7 { grid-template-columns: repeat(3, 1fr); }
+            .grid-7 .map-card:last-child { grid-column: span 3; }
+        }
+
+        .map-card h4 { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            color: var(--azul-gov); 
+            margin-bottom: 10px; 
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html">EDUCAÇÃO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section style="padding: 40px 0 20px 0;">
+        <div class="tag verde">INEG</div>
+        <h2>Instituto Nacional Estatístico, Ecológico e Geográfico Guianense</h2>
+        <p style="color: #666;">Veja informações do INEG.</p>
+    </section>
+    <h2 class="titulo-destaque">Plebiscitos e Referendos Históricos</h2>
+
+<div class="tabela-wrapper">
+    <table class="ineg-table">
+        <tbody id="listaPlebiscitos">
+            <tr class="row-hidden">
+                <td class="ano-col">1915</td>
+                <td>
+                    <strong>REFERENDO NA GUIANA:</strong> União com o Suriname
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 76.4%; background: var(--voto-sim);" data-pct="76.4%"></div>
+                        <div class="voto-segmento" style="width: 23.6%; background: var(--voto-nao);" data-pct="23.6%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-sim)"></span>Sim</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-nao)"></span>Não</div>
+                    </div>
+                    <div class="desfecho-badge badge-sucesso">Aprovado</div>
+                </td>
+            </tr>
+
+            <tr class="row-main">
+                <td class="ano-col">1932</td>
+                <td>
+                    <strong>REFERENDO NA REPÚBLICA DAS ÁGUAS:</strong> Formação da Federação
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 68.1%; background: var(--voto-sim);" data-pct="68.1%"></div>
+                        <div class="voto-segmento" style="width: 31.9%; background: var(--voto-nao);" data-pct="31.9%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-sim)"></span>Sim</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-nao)"></span>Não</div>
+                    </div>
+                    <div class="desfecho-badge badge-sucesso">União Aprovada</div>
+                </td>
+            </tr>
+
+            <tr class="row-hidden">
+                <td class="ano-col">1935</td>
+                <td>
+                    <strong>PLEBISCITO EM BOLÍVAR:</strong> Emancipação do Território de Delta Amacuro
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 59.5%; background: var(--voto-sim);" data-pct="59.5%"></div>
+                        <div class="voto-segmento" style="width: 40.5%; background: var(--voto-nao);" data-pct="40.5%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-sim)"></span>Sim</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-nao)"></span>Não</div>
+                    </div>
+                    <div class="desfecho-badge badge-sucesso">Aprovado</div>
+                </td>
+            </tr>
+
+            <tr class="row-main">
+                <td class="ano-col">1937</td>
+                <td>
+                    <strong>REFERENDO NACIONAL:</strong> Entrada na Guerra Amazônica
+                    <p style="font-size: 0.65rem; font-weight: 800; margin: 15px 0 5px 0; color: #666;">FASE 1: POSICIONAMENTO GEOPOLÍTICO</p>
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 21.7%; background: var(--voto-neutro);" data-pct="21.7%"></div>
+                        <div class="voto-segmento" style="width: 18.9%; background: var(--voto-nao);" data-pct="18.9%"></div>
+                        <div class="voto-segmento" style="width: 59.4%; background: var(--voto-sim);" data-pct="59.4%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-neutro)"></span>Neutralidade</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-nao)"></span>Brasil</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-sim)"></span>Amazônia</div>
+                    </div>
+
+                    <p style="font-size: 0.65rem; font-weight: 800; margin: 15px 0 5px 0; color: #666;">FASE 2: MODO DE INTERVENÇÃO</p>
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 31.2%; background: var(--voto-extra);" data-pct="31.2%"></div>
+                        <div class="voto-segmento" style="width: 68.8%; background: var(--ouro);" data-pct="68.8%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-extra)"></span>Apoio</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--ouro)"></span>Entrada Ativa</div>
+                    </div>
+                    <div class="desfecho-badge badge-guerra">Intervenção Ativa Aprovada</div>
+                </td>
+            </tr>
+
+            <tr class="row-hidden">
+                <td class="ano-col">1946</td>
+                <td>
+                    <strong>REFERENDO GUIANA ALEMÃ:</strong> Independência e Integração
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 83.2%; background: var(--voto-sim);" data-pct="83.2%"></div>
+                        <div class="voto-segmento" style="width: 16.8%; background: var(--voto-nao);" data-pct="16.8%"></div>
+                    </div>
+                    <div class="desfecho-badge badge-sucesso">Independência Confirmada</div>
+
+                    <div style="background: #f8fafc; padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px solid #e2e8f0;">
+                        <strong>PLEBISCITO DE ANEXAÇÃO DO OIAPOQUE</strong>
+                        <p style="font-size: 0.65rem; margin-top: 10px;">Votação na Região do Oiapoque:</p>
+                        <div class="voto-bar-container">
+                            <div class="voto-segmento" style="width: 75.6%; background: var(--voto-sim);" data-pct="75.6%"></div>
+                            <div class="voto-segmento" style="width: 24.4%; background: var(--voto-nao);" data-pct="24.4%"></div>
+                        </div>
+                        <p style="font-size: 0.65rem; margin-top: 10px;">Votação na Federação (Aceitação):</p>
+                        <div class="voto-bar-container">
+                            <div class="voto-segmento" style="width: 71.3%; background: var(--voto-sim);" data-pct="71.3%"></div>
+                            <div class="voto-segmento" style="width: 28.7%; background: var(--voto-nao);" data-pct="28.7%"></div>
+                        </div>
+                    </div>
+                    <div class="desfecho-badge badge-sucesso">Integração Concluída</div>
+                </td>
+            </tr>
+
+            <tr class="row-hidden">
+                <td class="ano-col">1981</td>
+                <td>
+                    <strong>PLEBISCITO EM ESSEQUIBO:</strong> Emancipação para Estado
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 7.9%; background: var(--voto-sim);" data-pct="7.9%"></div>
+                        <div class="voto-segmento" style="width: 92.1%; background: var(--voto-nao);" data-pct="92.1%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-sim)"></span>Sim</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-nao)"></span>Não</div>
+                    </div>
+                    <div class="desfecho-badge badge-erro">Rejeitado</div>
+                </td>
+            </tr>
+
+            <tr class="row-hidden">
+                <td class="ano-col">2021</td>
+                <td>
+                    <strong>REFERENDO DE ADESÃO:</strong> Trindade e Tobago
+                    <div style="margin-bottom: 10px;">
+                        <span style="font-size: 0.65rem;">Votação em Trindade e em Tobago:</span>
+                        <div class="voto-bar-container">
+                            <div class="voto-segmento" style="width: 63.4%; background: var(--voto-sim);" data-pct="63.4%"></div>
+                            <div class="voto-segmento" style="width: 36.6%; background: var(--voto-nao);" data-pct="36.6%"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <span style="font-size: 0.65rem;">Votação na Federação:</span>
+                        <div class="voto-bar-container">
+                            <div class="voto-segmento" style="width: 66.2%; background: var(--voto-sim);" data-pct="66.2%"></div>
+                            <div class="voto-segmento" style="width: 33.8%; background: var(--voto-nao);" data-pct="33.8%"></div>
+                        </div>
+                    </div>
+                    <div class="desfecho-badge badge-sucesso">Adesão Aprovada</div>
+                </td>
+            </tr>
+
+            <tr class="row-hidden">
+                <td class="ano-col">2021</td>
+                <td>
+                    <strong>PLEBISCITO EM DELTA AMACURO:</strong> Incorporação de Trindade e Tobago
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 71.5%; background: var(--voto-sim);" data-pct="71.5%"></div>
+                        <div class="voto-segmento" style="width: 28.5%; background: var(--voto-nao);" data-pct="28.5%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-sim)"></span>Sim</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-nao)"></span>Não</div>
+                    </div>
+                    <div class="desfecho-badge badge-sucesso">Criação dos Distritos Estaduais</div>
+                </td>
+            </tr>
+
+            <tr class="row-main">
+                <td class="ano-col">2022</td>
+                <td>
+                    <strong>REFERENDO NACIONAL:</strong> Compra do Norte do Pará
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 52.7%; background: var(--voto-sim);" data-pct="52.7%"></div>
+                        <div class="voto-segmento" style="width: 18.4%; background: var(--voto-extra);" data-pct="18.4%"></div>
+                        <div class="voto-segmento" style="width: 11.2%; background: var(--voto-neutro);" data-pct="11.2%"></div>
+                        <div class="voto-segmento" style="width: 17.7%; background: var(--voto-nao);" data-pct="17.7%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-sim)"></span>Trombetas</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-extra)"></span>Dividir entre Amapá e Rio Branco</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-neutro)"></span>Dividir entre Amapá, Rio Branco, Guiana e Suriname</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-nao)"></span>Recusar Compra</div>
+                    </div>
+                    <div class="desfecho-badge badge-neutro">Criação do Estado de Trombetas</div>
+                </td>
+            </tr>
+
+            <tr class="row-hidden">
+                <td class="ano-col">2025</td>
+                <td>
+                    <strong>PLEBISCITO EM BOLÍVAR:</strong> Criação do Estado da Guayana
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 61.9%; background: var(--voto-sim);" data-pct="61.9%"></div>
+                        <div class="voto-segmento" style="width: 38.1%; background: var(--voto-nao);" data-pct="38.1%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-sim)"></span>Sim</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-nao)"></span>Não</div>
+                    </div>
+                    <div class="desfecho-badge badge-sucesso">Aprovado</div>
+                </td>
+            </tr>
+
+
+            <tr class="row-hidden">
+                <td class="ano-col">2025</td>
+                <td>
+                    <strong>PLEBISCITO NA GUIANA E NO SURINAME:</strong> Criação do Distrito de Conservação Amazônica Triângulo do Tigri
+                    <div class="voto-bar-container">
+                        <div class="voto-segmento" style="width: 52.7%; background: var(--voto-sim);" data-pct="52.7%"></div>
+                        <div class="voto-segmento" style="width: 47.3%; background: var(--voto-nao);" data-pct="47.3%"></div>
+                    </div>
+                    <div class="legenda-votos">
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-sim)"></span>Sim</div>
+                        <div class="legenda-item"><span class="dot" style="background:var(--voto-nao)"></span>Não</div>
+                    </div>
+                    <div class="desfecho-badge badge-sucesso">Aprovado</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        <div class="btn-container">
+            <button class="btn-toggle" id="btnCronologia" onclick="toggleTabela()">
+                <span id="btnTexto">Ver Cronologia Completa</span>
+                <i class="seta seta-baixo" id="btnSeta"></i>
+            </button>
+        </div>
+    </div> 
+
+</div>
+</main>
+
+
+<section class="container">
+    <h2 class="titulo-destaque">Divisões Territoriais</h2>
+    <div class="map-card">
+        <h4>Sub-regiões Administrativas</h4>
+        <img src="img/mapa-subregioes.png" alt="Sub-regiões">
+    </div>
+
+    <h2 class="titulo-destaque">Infraestrutura</h2>
+    <div class="legenda-votos" style="justify-content: center; margin-top: 15px;">
+            <div class="legenda-item">
+                <span class="dot" style="background: #4b0082;"></span> Rodovias Federais
+            </div>
+            <div class="legenda-item">
+                <span class="dot" style="background: #bc2a3a;"></span> Rodovias Estaduais
+            </div>
+            <div class="legenda-item">
+                <span class="dot" style="background: #f1c40f;"></span> Rodovias Distritais
+            </div>
+            <div class="legenda-item">
+                <span class="dot" style="background: #8b4513;"></span> Ferrovias Nacionais
+            </div>
+        </div>
+        <br>
+        <div class="map-grid">
+            <div class="map-card">
+                <h4>Rodovias</h4>
+                <img src="img/mapa-rodovias.png" alt="Rodovias">
+            </div>
+
+            <div class="map-card">
+                <h4>Ferrovias</h4>
+                <img src="img/mapa-ferrovias.png" alt="Ferrovias">
+            </div>
+        </div>
+
+
+    <h2 class="titulo-destaque">Organizações Internacionais</h2>
+    <div class="grid-7">
+        <div class="map-card"><h4>OEA</h4><img src="img/mapa-oea.png"></div>
+        <div class="map-card"><h4>Mercosul</h4><img src="img/mapa-mercosul.png"></div>
+        <div class="map-card"><h4>OTCA</h4><img src="img/mapa-otca.png"></div>
+        <div class="map-card"><h4>Prosul</h4><img src="img/mapa-prosul.png"></div>
+        <div class="map-card"><h4>Caricom</h4><img src="img/mapa-caricom.png"></div>
+        <div class="map-card"><h4>SELA</h4><img src="img/mapa-sela.png"></div>
+        <div class="map-card"><h4>ALADI</h4><img src="img/mapa-aladi.png"></div>
+    </div>
+</section>
+
+<footer class="gov-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-info">
+                    <img src="img/brasao.png" alt="Brasão Branco" style="filter: brightness(0) invert(1); width: 80px;">
+                    <h4>Governo da Federação das Guianas</h4>
+                    <p>Portal Oficial</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contatos</h4>
+                <p>State House, Porto Courantyne</p>
+                <p>Distrito Federal de Courantyne</p>
+                <div class="social-links">
+                    <span>Gov.fg</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright-area">
+                <span>©</span>
+                <p>2025 Governo da Federação das Guianas. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-column">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Acessibilidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleTabela() {
+        const rows = document.querySelectorAll('.row-hidden');
+        const texto = document.getElementById('btnTexto');
+        const seta = document.getElementById('btnSeta');
+        
+        // Verifica se a primeira linha está escondida
+        const estaEscondido = (rows[0].style.display === 'none' || rows[0].style.display === '');
+
+        rows.forEach(r => {
+            r.style.display = estaEscondido ? 'table-row' : 'none';
+        });
+
+        // Troca o texto e a direção da seta
+        if (estaEscondido) {
+            texto.innerText = 'Ver Principais';
+            seta.classList.remove('seta-baixo');
+            seta.classList.add('seta-cima');
+        } else {
+            texto.innerText = 'Ver Cronologia Completa';
+            seta.classList.remove('seta-cima');
+            seta.classList.add('seta-baixo');
+        }
+    }
+</script>
+
+</body>
+</html>
