@@ -4,27 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cultura — Federação das Guianas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lora:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
         :root {
             --azul-gov: #0a2e52;
             --ouro-gov: #d4af37;
+            --vermelho: #c0392b;
+            --branco: #ffffff;
         }
 
-        .tag-poder {
-            background: var(--ouro-gov);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: inline-block;
-        }
-
-        /* TOPO PADRONIZADO (IGUAL AOS OUTROS PODERES) */
+        /* PADRÃO DE TOPO (MESMO DAS OUTRAS PÁGINAS) */
         .cultura-hero-grid {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -38,83 +28,102 @@
         }
 
         .cultura-texto-topo { padding: 60px; color: white; }
+        
+        /* IMAGEM DO TOPO: Uma arte abstrata representando a união da selva e mar */
         .cultura-imagem-topo {
-            background-image: url('img/cultura.png'); 
+            background: linear-gradient(45deg, #0a2e52, #1a4a7a);
+            background-image: url('img/cultura-geral.jpg'); 
             background-size: cover;
             background-position: center;
         }
 
-        /* SEÇÕES DE CONTEÚDO */
+        .tag-identidade {
+            background: var(--vermelho);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* SEÇÕES CRIATIVAS */
         .secao-cultura { margin: 80px 0; }
-        .titulo-secao-cultura {
+
+        .header-bloco {
+            margin-bottom: 40px;
+            border-left: 5px solid var(--ouro-gov);
+            padding-left: 20px;
+        }
+
+        .header-bloco h2 {
             font-size: 2rem;
             color: var(--azul-gov);
             font-weight: 800;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            text-transform: uppercase;
+            margin: 0;
         }
 
-        /* CARDS DE CULTURA */
-        .grid-cultura {
+        .header-bloco span {
+            font-size: .9rem;
+            color: #64748b;
+        }
+
+        /* GRID DE ITENS CULTURAIS */
+        .grid-itens {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
 
-        .card-item-cultural {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
+        .card-cultural {
+            display: grid;
+            grid-template-columns: 150px 1fr; /* Espaço para uma imagem pequena quadrada */
+            gap: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
             border: 1px solid #e2e8f0;
-            border-left: 8px solid var(--vermelho);
             transition: 0.3s;
         }
 
-        .card-item-cultural:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        .card-cultural:hover {
+            border-color: var(--ouro-gov);
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .nome-item {
-            font-size: 1.3rem;
+        .img-item {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            background-color: #cbd5e1;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .info-item h3 {
+            font-size: 1.1rem;
             color: var(--azul-gov);
             font-weight: 800;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .subtitulo-item {
-            color: var(--ouro-gov);
-            font-weight: 700;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: block;
         }
 
-        .texto-item {
-            font-size: 0.95rem;
+        .info-item p {
+            font-size: 0.9rem;
             color: #475569;
-            line-height: 1.8;
-            text-align: justify;
+            line-height: 1.6;
         }
 
-        .destaque-cultural {
-            background: #f8fafc;
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 20px;
-            font-style: italic;
-            border-right: 4px solid var(--ouro-gov);
-        }
-
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
             .cultura-hero-grid { grid-template-columns: 1fr; }
-            .cultura-imagem-topo { height: 300px; order: 2; }
-            .cultura-texto-topo { order: 1; padding: 40px; }
+            .grid-itens { grid-template-columns: 1fr; }
+            .card-cultural { grid-template-columns: 1fr; }
+            .img-item { width: 100%; height: 200px; }
         }
     </style>
 </head>
@@ -142,79 +151,72 @@
     <section style="padding: 40px 0 20px 0;">
         <div class="tag dourado">IDENTIDADE</div>
         <h2 class="titulo-destaque">Cultura</h2>
-        <p style="color: #666;">Veja algumas tradições específicas da Federação.</p>
+        <p style="color: #666;">A alma da Federação das Guianas: onde a força do continente encontra a liberdade do oceano. Conheça as raízes que formam a nossa união.</p>
     </section>
-    <section class="cultura-hero-grid">
-        <div class="cultura-texto-topo">
-            <span class="tag-poder" style="margin-bottom: 20px;">Identidade Nacional</span>
-            <h2 style="font-size: 2.5rem; color: white; margin: 10px 0;">Cultura e Tradição</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.9;">
-                A alma da Federação das Guianas é moldada pela fusão entre a floresta e o oceano. Uma nação de "Muitas Águas" que celebra sua ancestralidade indígena, caribenha e continental através de ritmos, sabores e cores únicas.
-            </p>
-        </div>
-        <div class="cultura-imagem-topo"></div>
-    </section>
-
     <section class="secao-cultura">
-        <h3 class="titulo-secao-cultura">Gastronomia</h3>
-        <p style="margin-bottom: 30px; margin-top: -30px; color: #64748b;">O Caldeirão do Aruak</p>
-        
-        <div class="grid-cultura">
-            <div class="card-item-cultural">
-                <span class="subtitulo-item">Prato Nacional</span>
-                <span class="nome-item">Pepperpot Guianense</span>
-                <p class="texto-item">
-                    Preparado com carne de caça ou peixe de rio, mandioca brava e pimentas abundantes. O segredo é o <b>Cassareep</b> (melaço de mandioca), que permite que o guisado seja reaquecido por dias, simbolizando a longa memória da nação.
-                </p>
+        <div class="header-bloco">
+            <h2>Gastronomia Nacional</h2>
+            <span>O Caldeirão do Aruak</span>
+        </div>
+        <div class="grid-itens">
+            <div class="card-cultural">
+                <div class="img-item" style="background-image: url('img/pepperpot.jpg');"></div>
+                <div class="info-item">
+                    <h3>Pepperpot</h3>
+                    <p>Prato nacional de longa memória. Um guisado de carne e mandioca brava com Cassareep, que se renova a cada refeição.</p>
+                </div>
             </div>
-            <div class="card-item-cultural">
-                <span class="subtitulo-item">Bebida de Celebração</span>
-                <span class="nome-item">Ron de Unitekisu</span>
-                <p class="texto-item">
-                    Um rum escuro forte, produzido nas destilarias de Trindade e Tobago e envelhecido em barris na selva de Guayana, representando a ligação entre as ilhas e o continente.
-                </p>
+            <div class="card-cultural">
+                <div class="img-item" style="background-image: url('img/ron.jpg');"></div>
+                <div class="info-item">
+                    <h3>Ron de Unitekisu</h3>
+                    <p>O espírito da união: rum caribenho envelhecido sob o dossel das selvas continentais.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="secao-cultura">
-        <h3 class="titulo-secao-cultura">Música e Ritmos</h3>
-        <p style="margin-bottom: 30px; margin-top: -30px; color: #64748b;">O Som das Fronteiras</p>
-        <div class="grid-cultura">
-            <div class="card-item-cultural">
-                <span class="subtitulo-item">Gênero Musical</span>
-                <span class="nome-item">Kaiso-Fluve</span>
-                <p class="texto-item">
-                    Evolução do Calipso misturado com ritmos rituais indígenas. Caracterizado por letras satíricas acompanhadas por tambores de aço caribenhos e percussão de madeira da selva.
-                </p>
+        <div class="header-bloco">
+            <h2>Música e Ritmos</h2>
+            <span>O Som das Fronteiras</span>
+        </div>
+        <div class="grid-itens">
+            <div class="card-cultural">
+                <div class="img-item" style="background-image: url('img/kaisofluve.jpg');"></div>
+                <div class="info-item">
+                    <h3>Kaiso-Fluve</h3>
+                    <p>A pulsação do aço e da madeira. Ritmos satíricos que fundem o calipso com a ancestralidade indígena.</p>
+                </div>
             </div>
-            <div class="card-item-cultural">
-                <span class="subtitulo-item">Grande Evento</span>
-                <span class="nome-item">Festival de Guiana</span>
-                <p class="texto-item">
-                    Realizado anualmente na estação das chuvas, celebra os rios e o mar. É uma grande competição de música e dança que une as origens africanas e ameríndias da "Terra de Muitas Águas".
-                </p>
+            <div class="card-cultural">
+                <div class="img-item" style="background-image: url('img/festivaldeguiana.jpg');"></div>
+                <div class="info-item">
+                    <h3>Festival de Guiana</h3>
+                    <p>A celebração das águas. Competições rítmicas que unem o país durante a estação das chuvas.</p>
+                </div>
             </div>
         </div>
     </section>
-
     <section class="secao-cultura">
-        <h3 class="titulo-secao-cultura">Arquitetura e Artesanato</h3>
-        <p style="margin-bottom: 30px; margin-top: -30px; color: #64748b;">Legado e Natureza</p>
-        <div class="grid-cultura">
-            <div class="card-item-cultural">
-                <span class="subtitulo-item">Artesanato Real</span>
-                <span class="nome-item">Waz de Guilerma</span>
-                <p class="texto-item">
-                    Peça de joalheria em madeira amazônica ou ouro. Representa a vigilância da nação e a riqueza mineral. É o presente diplomático oficial da Federação.
-                </p>
+        <div class="header-bloco">
+            <h2>Arquitetura e Artesanato</h2>
+            <span>Legado e Natureza</span>
+        </div>
+        <div class="grid-itens">
+            <div class="card-cultural">
+                <div class="img-item" style="background-image: url('img/wazdeguilerma.jpg');"></div>
+                <div class="info-item">
+                    <h3>Waz de Guilerma</h3>
+                    <p>Peça de joalheria ou adorno de madeira, representando o símbolo central da bandeira nacional. Simboliza a vigilância da nação e a riqueza mineral.</p>
+                </div>
             </div>
-            <div class="card-item-cultural">
-                <span class="subtitulo-item">Identidade Visual</span>
-                <span class="nome-item">Estilo Neo-Tropical</span>
-                <p class="texto-item">
-                    A arquitetura de Porto Courantyne mistura o legado colonial com o brutalismo sul-americano e soluções térmicas modernas, criando um design tropical soberano.
-                </p>
+            <div class="card-cultural">
+                <div class="img-item" style="background-image: url('img/neotropical.jpg');"></div>
+                <div class="info-item">
+                    <h3>Neo-Tropical</h3>
+                    <p>O estilo da capital Porto Courantyne e dos grandes edifícios governamentais é uma mistura de edifícios coloniais com o brutalismo sul-americano e elementos tropicais.</p>
+                </div>
             </div>
         </div>
     </section>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educação — Federação das Guianas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lora:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --azul-gov: #0a2e52;
+            --ouro-gov: #d4af37;
+            --cinza-claro: rgb(255, 255, 255);
+        }
+
+        .educacao-hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            background: var(--azul-gov);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--ouro-gov);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            margin-top: 50px;
+        }
+
+        .educacao-texto-topo { padding: 60px; color: white; }
+
+        .tag-educacao {
+            background: var(--verde);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .secao-topico {
+            margin: 60px 0;
+            padding-bottom: 20px;
+        }
+
+        .secao-topico h2 {
+            font-size: 2rem;
+            color: var(--azul-gov);
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--verde-agua);
+            padding-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subsecao-card {
+            background: var(--cinza-claro);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 8px solid var(--azul-gov); /* Borda lateral para destaque */
+            display: flex; /* Para alinhar logo e texto */
+            gap: 25px;
+            align-items: flex-start;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .subsecao-card.uf { border-left-color: var(--ouro-gov); }
+        .subsecao-card.ue { border-left-color: var(--vermelho); }
+        .subsecao-card.ud { border-left-color: var(--verde); }
+
+
+        .subsecao-card img.logo-universiti {
+            width: 100px;
+            height: auto;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .subsecao-card h3 {
+            font-size: 1.5rem;
+            color: var(--azul-gov);
+            font-weight: 800;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .subsecao-card .num-campi {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .subsecao-card p {
+            font-size: 1rem;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        @media (max-width: 900px) {
+            .educacao-hero-grid { grid-template-columns: 1fr; }
+            .educacao-texto-topo { padding: 40px; }
+            .secao-topico h2 { font-size: 1.5rem; }
+            .subsecao-card { flex-direction: column; text-align: center; }
+            .subsecao-card img.logo-universiti { margin: 0 auto 20px auto; }
+            .subsecao-card h3 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="brand">
+            <img src="img/brasao.png" alt="Brasão">
+            <div class="brand-text">
+                <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">INÍCIO</a>
+            <a href="cultura.html">CULTURA</a>
+            <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html" class="active">EDUCAÇÃO</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="educacao-hero-grid">
+        <div class="educacao-texto-topo">
+            <span class="tag-educacao">Formando o Futuro</span>
+            <h2 style="font-size: 2.5rem; color: white; margin: 10px 0;">Educação Nacional</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.9;">
+                O sistema educacional da Federação das Guianas é a base para o desenvolvimento de nossos cidadãos, desde os primeiros passos na infância até as mais altas especializações universitárias.
+            </p>
+        </div>
+    </section>
+
+    <section class="secao-topico">
+        <h2>Educação Básica</h2>
+        
+        <div class="subsecao-card">
+            <div style="width: 100px; height: auto; flex-shrink: 0; text-align: center;">
+                <img src="img/infantil.png" alt="Ícone Educação Infantil" style="width: 70px; margin-top: 10px;">
+            </div>
+            <div>
+                <h3>Educação Infantil</h3>
+                <span class="num-campi">Primeiros passos, futuro certo.</span>
+                <p>Fase inicial do desenvolvimento, focada na ludicidade, socialização e primeiros aprendizados cognitivos. Essencial para a formação integral das crianças, preparando-as para os desafios do futuro.</p>
+            </div>
+        </div>
+
+        <div class="subsecao-card">
+            <div style="width: 100px; height: auto; flex-shrink: 0; text-align: center;">
+                <img src="img/fundamental.png" alt="Ícone Ensino Fundamental" style="width: 70px; margin-top: 10px;">
+            </div>
+            <div>
+                <h3>Ensino Fundamental</h3>
+                <span class="num-campi">Construindo o conhecimento.</span>
+                <p>O alicerce do conhecimento, abrangendo as áreas essenciais para a compreensão do mundo e o desenvolvimento das habilidades críticas, preparando os estudantes para a próxima etapa educacional.</p>
+            </div>
+        </div>
+        
+        <div class="subsecao-card">
+            <div style="width: 100px; height: auto; flex-shrink: 0; text-align: center;">
+                <img src="img/medio.png" alt="Ícone Ensino Médio" style="width: 70px; margin-top: 10px;">
+            </div>
+            <div>
+                <h3>Ensino Médio</h3>
+                <span class="num-campi">Porta para o mundo.</span>
+                <p>Preparação para o futuro, com aprofundamento de conteúdos e orientação para o ensino superior ou o mercado de trabalho, capacitando os jovens para suas escolhas de carreira.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao-topico">
+        <h2>Ensino Superior</h2>
+        
+        <div class="subsecao-card uf">
+            <img src="img/logo-uf.png" alt="Logo Universiti Federale" class="logo-universiti">
+            <div>
+                <h3>Universiti Federale (UF)</h3>
+                <span class="num-campi">13 campi</span>
+                <p>A Universiti Federale (UF) é a espinha dorsal do sistema de ensino superior, com 13 campus espalhados por quase todo o território. Seu principal objetivo é garantir o acesso à educação de alta qualidade e alinhar a pesquisa às necessidades estratégicas da nação.</p>
+                <p>A UF possui campus em dez estados (Amapá, Amazonas, Bolívar, Guayana, Rio Branco, Trombetas, Guiana, Suriname, Oiapoque e Delta Amacuro), consolidando a presença do Governo Central em todas as regiões. Além disso, a rede inclui campus nos distritos estratégicos de Tobago e Trindade, reforçando a soberania caribenha, e um campus central e prestigiado na capital, Porto Courantyne. O currículo da UF é fortemente focado em Engenharia de Recursos Naturais e em Etnobotânica e Estudos da Selva.</p>
+            </div>
+        </div>
+
+        <div class="subsecao-card ue">
+            <img src="img/logo-ue.png" alt="Logo Universiti Estatale" class="logo-universiti">
+            <div>
+                <h3>Universiti Estatale (UE)</h3>
+                <span class="num-campi">5 campi</span>
+                <p>As Universiti Estatale (UE) complementam a rede federal, focando em responder às necessidades de desenvolvimento regional específicas. Com cinco campus localizados nos estados de Guiana, Suriname, Amapá, Delta Amacuro e Amazonas, as UE têm maior autonomia administrativa e curricular.</p>
+                <p>Estas universidades tendem a focar em áreas essenciais para a economia local, como agricultura de subsistência, turismo sustentável e desenvolvimento social. Elas servem como centros vitais de pesquisa sobre a cultura e história regional, incluindo a análise aprofundada das línguas nativas e dos crioulos locais, mantendo viva a diversidade cultural da Federação.</p>
+            </div>
+        </div>
+
+        <div class="subsecao-card ud">
+            <img src="img/logo-ud.png" alt="Logo Universiti Distrita" class="logo-universiti">
+            <div>
+                <h3>Universiti Distrita (UD)</h3>
+                <span class="num-campi">1 campus</span>
+                <p>A Universiti Distrita (UD) representa o único nível de ensino superior focado inteiramente nas necessidades administrativas e culturais de um distrito. O único campus desta rede está localizado no Distrito de Trindade.</p>
+                <p>Esta universidade é crucial para integrar a herança caribenha e anglofônica dos distritos insulares com o restante da Federação. Seu foco é geralmente o Direito Marítimo, Relações Internacionais do Caribe e estudos culturais, como a história do Calipso e o desenvolvimento do estilo musical Kaiso-Fluve. A UD desempenha um papel fundamental na formação de diplomatas e especialistas em assuntos caribenhos.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="gov-footer">
+    </footer>
+
+</body>
+</html>
