@@ -13,8 +13,7 @@
             --vermelho: #c0392b;
             --branco: #ffffff;
         }
-
-        /* PADRÃO DE TOPO (MESMO DAS OUTRAS PÁGINAS) */
+        
         .cultura-hero-grid {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -28,16 +27,8 @@
         }
 
         .cultura-texto-topo { padding: 60px; color: white; }
-        
-        /* IMAGEM DO TOPO: Uma arte abstrata representando a união da selva e mar */
-        .cultura-imagem-topo {
-            background: linear-gradient(45deg, #0a2e52, #1a4a7a);
-            background-image: url('img/cultura-geral.jpg'); 
-            background-size: cover;
-            background-position: center;
-        }
 
-        .tag-identidade {
+        .tag-cultura {
             background: var(--vermelho);
             color: white;
             padding: 6px 16px;
@@ -50,7 +41,6 @@
             margin-bottom: 20px;
         }
 
-        /* SEÇÕES CRIATIVAS */
         .secao-cultura { margin: 80px 0; }
 
         .header-bloco {
@@ -72,7 +62,7 @@
             color: #64748b;
         }
 
-        /* GRID DE ITENS CULTURAIS */
+
         .grid-itens {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -81,7 +71,7 @@
 
         .card-cultural {
             display: grid;
-            grid-template-columns: 150px 1fr; /* Espaço para uma imagem pequena quadrada */
+            grid-template-columns: 150px 1fr; 
             gap: 20px;
             background: #f8fafc;
             border-radius: 12px;
@@ -152,6 +142,15 @@
         <div class="tag dourado">IDENTIDADE</div>
         <h2 class="titulo-destaque">Cultura</h2>
         <p style="color: #666;">A alma da Federação das Guianas: onde a força do continente encontra a liberdade do oceano. Conheça as raízes que formam a nossa união.</p>
+    </section>
+    <section class="cultura-hero-grid">
+        <div class="cultura-texto-topo">
+            <span class="tag-cultura">Sociedade</span>
+            <h2 style="font-size: 2.5rem; color: white; margin: 10px 0;">Cultura Nacional</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.9;">
+                A cultura da Federação das Guianas é a base do desenvolvimento de nossa sociedade atual e antiga, desde os primeiros indígenas, passando pela colonização europeia até chegar aos dias atuais.
+            </p>
+        </div>
     </section>
     <section class="secao-cultura">
         <div class="header-bloco">

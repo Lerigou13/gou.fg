@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Estilos específicos para a Página de Território */
         .map-gallery {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -23,13 +22,12 @@
         }
         .map-box h4 { color: var(--ouro); margin-bottom: 10px; font-size: 0.8rem; text-transform: uppercase; }
         
-        /* Botão Ajustado */
         .map-link {
             display: inline-block;
             padding: 8px 15px;
             background: var(--ouro);
             color: #111827;
-            cursor: pointer; /* Muda para mãozinha */
+            cursor: pointer; 
             border: none;
             font-weight: 800;
             font-size: 0.65rem;
@@ -39,7 +37,6 @@
         }
         .map-link:hover { background: #fff; transform: translateY(-2px); }
 
-        /* Regiões */
         .regioes-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 50px; }
         .regiao-card { padding: 20px; border-radius: 8px; color: white; }
         .norte { background: #2d5a27; }
@@ -48,7 +45,6 @@
         .regiao-card h4 { margin-bottom: 10px; font-size: 1rem; }
         .regiao-card p { font-size: 0.75rem; line-height: 1.5; opacity: 0.9; }
 
-        /* Grade de Estados - 3 Colunas */
         .state-full-card {
             background: white;
             border-radius: 12px;
@@ -99,7 +95,7 @@
         .col-historia p { font-size: 0.85rem; line-height: 1.6; color: #555; text-align: justify; }
         .footer-integracao { margin-top: auto; padding-top: 15px; border-top: 1px solid #f0f0f0; font-size: 0.7rem; color: #888; text-transform: uppercase; }
 
-        /* Cores de Categoria */
+
         .distrito-border { border-top-color: var(--ouro); }
         .proposta-border { border-top-color: var(--vermelho); border-top-style: dashed; }
 
@@ -165,7 +161,7 @@
             text-transform: uppercase;
             font-size: 0.9rem;
         }
-        /* Janela do Mapa */
+
         .modal-mapa {
             display: none; 
             position: fixed; 
@@ -641,17 +637,16 @@
             var img = document.getElementById("imgNoModal");
             var caption = document.getElementById("caption-modal");
             
-            modal.style.display = "flex"; // Mostra a janela
-            img.src = caminhoImg; // Troca a imagem pela que você clicou
-            caption.innerHTML = titulo; // Troca o título
+            modal.style.display = "flex"; 
+            img.src = caminhoImg; 
+            caption.innerHTML = titulo; 
         }
 
         function fecharMapa() {
             var modal = document.getElementById("modalMapa");
-            modal.style.display = "none"; // Esconde a janela
+            modal.style.display = "none"; 
         }
 
-        // Fecha se o usuário clicar fora da imagem
         window.onclick = function(event) {
             var modal = document.getElementById("modalMapa");
             if (event.target == modal) {

@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* GRID PRINCIPAL */
         .world-grid {
             display: flex;
             flex-direction: column;
@@ -20,13 +19,12 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             display: grid;
-            grid-template-columns: 1fr 1.2fr; /* Lado Esquerdo: Mapa | Lado Direito: Texto */
+            grid-template-columns: 1fr 1.2fr; 
             overflow: hidden;
             border: 1px solid #eee;
             min-height: 400px;
         }
 
-        /* Inverter a ordem em cards alternados para dinâmica visual */
         .continent-card.reverse {
             grid-template-columns: 1.2fr 1fr;
         }
@@ -51,7 +49,6 @@
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
         }
 
-        /* ÁREA DO TEXTO */
         .continent-info {
             padding: 40px;
             display: flex;
@@ -80,7 +77,6 @@
             margin-bottom: 15px;
         }
 
-        /* RESPONSIVIDADE (MOBILE) */
         @media (max-width: 992px) {
             .continent-card, .continent-card.reverse {
                 grid-template-columns: 1fr;
@@ -88,17 +84,17 @@
             }
 
             .continent-info {
-                order: 2 !important; /* Texto sempre depois no mobile */
+                order: 2 !important;
                 padding: 25px;
             }
 
             .continent-map {
-                padding: 10px; /* Quase sem borda no mobile para o mapa brilhar */
+                padding: 10px;
             }
 
             .continent-map img {
-                max-width: 500px; /* No celular, o limite é a largura da tela */
-                max-height: none; /* Deixa a altura livre para não achatar */
+                max-width: 500px;
+                max-height: none;
                 border-radius: 8px;
             }
         }

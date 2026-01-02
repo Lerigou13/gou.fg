@@ -20,7 +20,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        /* GRID DE PARTIDOS: 2 colunas no Desktop */
+
         .grid-partidos {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -38,7 +38,6 @@
             grid-template-columns: 1fr 1.2fr;
         }
 
-        /* COLUNA: Ficha Técnica */
         .col-info-partido {
             background: #f8f9fa;
             padding: 20px;
@@ -47,7 +46,6 @@
             flex-direction: column;
         }
 
-        /* COLUNA: Logo + Contexto */
         .col-visual-contexto {
             padding: 25px;
             display: flex;
@@ -55,7 +53,6 @@
             background: #fff;
         }
 
-        /* ESTILO DAS INFOS */
         .col-info-partido h3 { 
             font-size: 1rem; 
             color: var(--azul); 
@@ -73,7 +70,6 @@
         .cor-tag { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
         .cor-square { width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.1); }
 
-        /* ESTILO DA LOGO E TEXTO */
         .container-logo { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
         .container-logo img {
             width: 100%;
@@ -93,8 +89,6 @@
             border-top: 1px solid #f0f0f0;
             padding-top: 15px;
         }
-
-        /* --- RESPONSIVIDADE (O PONTO CHAVE) --- */
         
         @media (max-width: 1100px) {
             .grid-partidos { grid-template-columns: 1fr; }
@@ -102,30 +96,26 @@
 
         @media (max-width: 768px) {
             .card-partido-v2 { 
-                grid-template-columns: 1fr; /* Vira uma coluna única */
+                grid-template-columns: 1fr; 
             }
 
-            /* No celular, invertemos a ordem dos blocos */
             .col-info-partido { 
-                order: 2; /* Fica no meio */
+                order: 2; 
                 border-right: none;
                 border-top: 1px solid #eee;
             }
 
             .col-visual-contexto { 
-                order: 1; /* Fica no topo (Logo) */
+                order: 1; 
                 padding-bottom: 10px;
             }
 
-            /* No mobile, o contexto deve ficar embaixo das informações */
-            /* Para isso, separamos o contexto da logo visualmente */
             .texto-historico {
-                order: 3; /* Vai para o final do card */
+                order: 3; 
                 padding: 20px;
                 background: #fff;
             }
             
-            /* Ajuste técnico para o contexto descer no mobile */
             .col-visual-contexto { display: contents; } 
             .container-logo { order: 1; padding: 30px; background: #fff; margin-bottom: 0; }
         }

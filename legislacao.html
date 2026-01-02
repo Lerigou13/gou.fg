@@ -39,62 +39,59 @@
         .cargo-ass { font-family: 'Montserrat'; font-weight: 800; font-size: 0.75rem; color: #000; text-transform: uppercase; margin-top: 5px; }
 
         @media (max-width: 768px) { .documento-wrapper { padding: 30px 20px; } }
-    /* Contentor com comportamento de tudo ou nada */
-    .nav-leis {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 colunas por padrão */
-        gap: 20px;
-        max-width: 1100px;
-        margin: 50px auto;
-        padding: 0 25px;
-    }
 
-    .btn-lei {
-        padding: 20px 15px;
-        border: 2px solid #e2e8f0;
-        background: #ffffff;
-        color: #0a2e52;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        cursor: pointer;
-        border-radius: 12px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 70px;
-    }
-
-    .btn-lei:hover {
-        transform: translateY(-5px);
-        border-color: #d4af37;
-        box-shadow: 0 10px 20px rgba(10, 46, 82, 0.1);
-    }
-
-    .btn-lei.active {
-        background: #0a2e52;
-        color: #ffffff;
-        border-color: #0a2e52;
-        box-shadow: 0 8px 25px rgba(10, 46, 82, 0.3);
-    }
-
-    /* QUEBRA PARA UM EMBAIXO DO OUTRO */
-    @media (max-width: 850px) {
         .nav-leis {
-            grid-template-columns: 1fr; /* Força uma única coluna */
-            max-width: 450px; /* Evita que o botão fique largo demais */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px;
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 25px;
         }
-    }
 
-    /* Estilo do conteúdo (mesmo anterior) */
-    .const-content { display: none; animation: fadeIn 0.5s ease; }
-    .const-content.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .doc-page { background: #fff; padding: 60px; max-width: 900px; margin: 40px auto; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); font-family: 'Lora', serif; }
+        .btn-lei {
+            padding: 20px 15px;
+            border: 2px solid #e2e8f0;
+            background: #ffffff;
+            color: #0a2e52;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
+        }
+
+        .btn-lei:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 20px rgba(10, 46, 82, 0.1);
+        }
+
+        .btn-lei.active {
+            background: #0a2e52;
+            color: #ffffff;
+            border-color: #0a2e52;
+            box-shadow: 0 8px 25px rgba(10, 46, 82, 0.3);
+        }
+
+        @media (max-width: 850px) {
+            .nav-leis {
+                grid-template-columns: 1fr; 
+                max-width: 450px; 
+            }
+        }
+        .const-content { display: none; animation: fadeIn 0.5s ease; }
+        .const-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .doc-page { background: #fff; padding: 60px; max-width: 900px; margin: 40px auto; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); font-family: 'Lora', serif; }
     </style>
 </head>
 <body>
@@ -126,15 +123,12 @@
 
 <script>
 function trocarConstituicao(evt, idAlvo) {
-    // 1. Esconder todos os blocos de texto
     const blocos = document.querySelectorAll('.const-content');
     blocos.forEach(bloco => bloco.classList.remove('active'));
 
-    // 2. Remover o estado "active" de todos os botões
     const botoes = document.querySelectorAll('.btn-lei');
     botoes.forEach(btn => btn.classList.remove('active'));
 
-    // 3. Mostrar o bloco clicado e ativar o botão correspondente
     document.getElementById(idAlvo).classList.add('active');
     evt.currentTarget.classList.add('active');
 }
