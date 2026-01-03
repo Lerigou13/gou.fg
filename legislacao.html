@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        body { background-color: #f4f7f6; }
         .documento-wrapper {
             background: #ffffff;
             padding: 60px 80px;
@@ -19,6 +18,8 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             color: #1a1a1a;
         }
+
+        
         .doc-header { text-align: center; margin-bottom: 50px; border-bottom: 2px solid var(--ouro); padding-bottom: 20px; }
         .doc-header h2 { font-family: 'Montserrat'; font-weight: 800; color: var(--azul); margin-bottom: 5px; }
         .doc-header p { font-size: 0.9rem; font-weight: 700; color: #666; }
@@ -41,17 +42,16 @@
         @media (max-width: 768px) { .documento-wrapper { padding: 30px 20px; } }
 
         .nav-leis {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 20px;
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 25px;
+            display: flex;
+            max-width: 1000px; 
+            margin: 50px auto 0 auto; 
+            padding: 0; 
         }
 
         .btn-lei {
+            flex: 1;
             padding: 20px 15px;
-            border: 2px solid #e2e8f0;
+            border: 1px solid #d1d5db; 
             background: #ffffff;
             color: #0a2e52;
             font-family: 'Montserrat', sans-serif;
@@ -60,34 +60,69 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
-            border-radius: 12px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 70px;
+            
+            margin: 0;
+            border-radius: 0;
+            margin-right: -1px; 
         }
 
-        .btn-lei:hover {
-            transform: translateY(-5px);
-            border-color: #d4af37;
-            box-shadow: 0 10px 20px rgba(10, 46, 82, 0.1);
+        .btn-lei:first-child {
+            border-radius: 12px 0 0 12px;
+        }
+
+        .btn-lei:last-child {
+            border-radius: 0 12px 12px 0;
+            margin-right: 0;
+        }
+
+        .btn-lei:hover, .btn-lei.active {
+            z-index: 1;
+            border-color: #0a2e52;
+            background: #f8fafc;
+            color: #0a2e52;
         }
 
         .btn-lei.active {
             background: #0a2e52;
             color: #ffffff;
             border-color: #0a2e52;
-            box-shadow: 0 8px 25px rgba(10, 46, 82, 0.3);
+        }
+
+        @media (max-width: 1000px) {
+            .nav-leis {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
         }
 
         @media (max-width: 850px) {
             .nav-leis {
-                grid-template-columns: 1fr; 
-                max-width: 450px; 
+                flex-direction: column;
+                max-width: 1000px; 
+                margin: 20px auto; 
+                padding: 0 20px;
+            }
+
+            .btn-lei {
+                margin-right: 0;
+                margin-bottom: -1px;
+            }
+
+            .btn-lei:first-child {
+                border-radius: 12px 12px 0 0;
+            }
+
+            .btn-lei:last-child {
+                border-radius: 0 0 12px 12px;
+                margin-bottom: 0;
             }
         }
+
         .const-content { display: none; animation: fadeIn 0.5s ease; }
         .const-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -96,28 +131,32 @@
 </head>
 <body>
 
-    <header>
+<header>
     <div class="container header-flex">
-        <div class="brand">
-            <img src="img/brasao.png" alt="Brasão">
-            <div class="brand-text">
-                <h1>FEDERAÇÃO DAS GUIANAS</h1>
-                <p class="lema-topo">UNIDADES NA UNIÃO</p>
+        <a href="index.html" class="brand-link">
+            <div class="brand">
+                <img src="img/brasao.png" alt="Brasão">
+                <div class="brand-text">
+                    <h1>FEDERAÇÃO DAS GUIANAS</h1>
+                    <p class="lema-topo">UNIDADES NA UNIÃO</p>
+                </div>
             </div>
-        </div>
+        </a>
+        
         <nav class="nav-menu">
             <a href="index.html">INÍCIO</a>
-            <a href="simbolos.html">SÍMBOLOS</a>
-            <a href="territorio.html">TERRITÓRIO</a>
+            <a href="cultura.html">CULTURA</a>
             <a href="ministerios.html">MINISTÉRIOS</a>
+            <a href="educacao.html">EDUCAÇÃO</a>
         </nav>
     </div>
 </header>
 
 <main class="container">
-    <section style="padding: 40px 0;">
+    <section style="padding: 40px 0 20px 0;">
         <div class="tag roxo">LEGISLAÇÃO</div>
-        <h2>Constituições Federais</h2>
+        <h2 class="titulo-destaque">Constituições Federais</h2>
+        <p style="color: #666;">Veja o conteúdo completo das Constituições Federais de 1935, 1979 e 2025.</p>
     </section>
 </main>
 

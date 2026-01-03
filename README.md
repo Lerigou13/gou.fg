@@ -1,6 +1,6 @@
 # 🏛️ Portal Governamental da Federação das Guianas
 
-> **Plataforma unificada de gestão e informação pública** > **Acesso ao site:** [Clique aqui para acessar](https://lerigou13.github.io/Federacao-das-Guianas/)
+> **Plataforma unificada de gestão e informação pública** > **Acesso ao site:** [Clique aqui para acessar](https://lerigou13.github.io/Federcao-das-Guianas/)
 
 ---
 
