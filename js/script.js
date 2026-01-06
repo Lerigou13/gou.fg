@@ -407,3 +407,23 @@ function fecharCookie() {
     }, 1500); 
 }
 
+function toggleAbaAcess() {
+    const aba = document.getElementById('acess-aba');
+    aba.classList.toggle('open');
+}
+
+let fontSize = 100;
+function alterarFonte(acao) {
+    if (acao === 'aumentar' && fontSize < 120) fontSize += 5;
+    else if (acao === 'diminuir' && fontSize > 85) fontSize -= 5;
+    document.documentElement.style.fontSize = fontSize + "%";
+}
+
+function toggleContraste() {
+    document.body.classList.toggle('alto-contraste');
+    localStorage.setItem('altoContraste', document.body.classList.contains('alto-contraste') ? 'ativado' : 'desativado');
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (localStorage.getItem('altoContraste') === 'ativado') document.body.classList.add('alto-contraste');
+});
