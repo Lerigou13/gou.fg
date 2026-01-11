@@ -17,15 +17,15 @@
         }
 
         .card {
-            position: relative; /* Mantém o card como referência */
+            position: relative;
             background: var(--branco);
             border: 1px solid #e2e8f0;
             border-left: 6px solid var(--azul);
             padding: 20px;
             border-radius: 8px;
-            height: 230px; /* Definir uma altura fixa ajuda a manter a grade alinhada */
+            height: 230px; 
             flex-direction: column;
-            overflow: hidden; /* Garante que nada saia do card enquanto fechado */
+            overflow: hidden; 
             transition: all 0.3s ease;
         }
 
@@ -39,19 +39,14 @@
             color: white;
             padding: 20px;
             box-sizing: border-box;
-            
-            /* ESTADO INICIAL (Escondido) */
             opacity: 0;
             visibility: hidden;
-            transform: translateY(100%); /* Começa lá embaixo, fora do card */
+            transform: translateY(100%);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* SCROLL INTERNO (Caso o texto seja gigante) */
             overflow-y: auto; 
             z-index: 20;
         }
 
-        /* Personalizar a barra de rolagem dentro do card (opcional) */
         .card-descricao::-webkit-scrollbar {
             width: 5px;
         }
@@ -60,20 +55,12 @@
             border-radius: 10px;
         }
 
-        /* --- EFEITO AO PASSAR O MOUSE --- */
         .card:hover .card-descricao {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0); /* Sobe cobrindo as informações */
+            transform: translateY(0); 
         }
 
-        /* No Celular (Ao clicar) */
-        .card.active .card-descricao {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
         .card:hover {
             border-color: var(--azul);
             transform: translateY(-3px);

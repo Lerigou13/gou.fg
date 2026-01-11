@@ -1429,3 +1429,85 @@ body.alto-contraste .subsecao-card p {
     text-align: justify !important;
     line-height: 1.7 !important;
 }
+
+/* ============================================================
+   SISTEMA DE ALTO CONTRASTE (MONOCROMÁTICO)
+   ============================================================ */
+
+body.alto-contraste {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+/* Containers e Tabelas */
+body.alto-contraste .card-destaque, 
+body.alto-contraste .tabela-dicionario,
+body.alto-contraste .tabela-dicionario tbody tr,
+body.alto-contraste #containerTabela,
+body.alto-contraste #containerNumeros,
+body.alto-contraste #containerDicionarioFinal {
+    background-color: #000 !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+}
+
+/* Títulos de Categoria (I, II, III...) - Fundo Cinza Escuro */
+body.alto-contraste .tabela-dicionario thead th[colspan="3"] {
+    background-color: #333 !important;
+    color: #fff !important;
+    border-bottom: 2px solid #fff !important;
+    border-top: 2px solid #fff !important;
+    text-transform: uppercase;
+}
+
+/* Nomes das colunas - Cinza Médio */
+body.alto-contraste .tabela-dicionario thead th {
+    background-color: #444 !important;
+    color: #fff !important;
+    border-bottom: 2px solid #fff !important;
+}
+
+/* Palavra em Guianês - Branco Negrito (Destaque total no fundo preto) */
+body.alto-contraste .gn {
+    color: #fff !important;
+    font-weight: 900;
+    text-decoration: underline; /* Adicionado um sublinhado para destacar o termo */
+}
+
+/* Categoria e Contexto - Cinza Claro */
+body.alto-contraste .ctx {
+    color: #ccc !important;
+    font-style: italic;
+}
+
+/* Input de Busca */
+body.alto-contraste #inputBusca {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+
+/* Ajuste Mobile (Labels) */
+@media (max-width: 768px) {
+    body.alto-contraste .tabela-dicionario tbody td::before {
+        color: #ccc !important; /* Rótulos em cinza claro */
+        border-right: 1px solid #fff;
+        padding-right: 10px;
+    }
+    
+    body.alto-contraste .tabela-dicionario tbody tr {
+        border: 2px solid #fff !important;
+        margin-bottom: 10px;
+    }
+}
+
+/* Quadro de Exemplo de Números - Borda Branca Sólida */
+body.alto-contraste td[colspan="3"] div {
+    border: 2px solid #fff !important;
+    background-color: #111 !important;
+}
+
+/* Efeito de Zebrado no Contraste (Linhas alternadas em cinza muito escuro) */
+body.alto-contraste .tabela-dicionario tbody tr:nth-child(even) {
+    background-color: #1a1a1a !important;
+}

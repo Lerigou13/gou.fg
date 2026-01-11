@@ -125,7 +125,7 @@ const categorias = {
         'historia.html', 
         'simbolos.html', 
         'cultura.html', 
-        'partidos.html', 
+        'guianese.html', 
         'governantes.html'
     ],
     'territorio': [
@@ -136,7 +136,8 @@ const categorias = {
         'ministerios.html', 
         'executivo.html',
         'legislativo.html',
-        'judiciario.html'
+        'judiciario.html',
+        'partidos.html'
     ],
     'legislacao': [
         'constituicao.html'
@@ -490,3 +491,56 @@ if(btnPrevBottom) btnPrevBottom.onclick = anterior;
 
 // Inicializa
 atualizar();
+
+function filtrarDicionario() {
+    const input = document.getElementById("inputBusca");
+    const filter = input.value.toUpperCase();
+    const table = document.getElementById("tabelaDados");
+    
+    // Pega todas as linhas de conteúdo (palavras)
+    const trPalavras = table.querySelectorAll("tbody tr");
+    // Pega todos os cabeçalhos de categoria (linhas azuis)
+    const theadCategorias = table.querySelectorAll("thead");
+    
+    const mensagemVazia = document.getElementById("mensagemVazia");
+    const containerTabela = document.getElementById("containerTabela");
+    
+    let encontrouAlgo = false;
+
+    // 1. Lógica para as palavras (tbody)
+    for (let i = 0; i < trPalavras.length; i++) {
+        let mostrarLinha = false;
+        const tds = trPalavras[i].getElementsByTagName("td");
+        
+        for (let j = 0; j < tds.length; j++) {
+            if (tds[j]) {
+                const txtValue = tds[j].textContent || tds[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    mostrarLinha = true;
+                    encontrouAlgo = true;
+                    break;
+                }
+            }
+        }
+        trPalavras[i].style.display = mostrarLinha ? "" : "none";
+    }
+
+    // 2. Lógica para as Categorias (Linhas Azuis)
+    // Se o usuário digitou algo, escondemos os títulos de categoria para limpar o visual
+    theadCategorias.forEach(header => {
+        if (filter.length > 0) {
+            header.style.display = "none";
+        } else {
+            header.style.display = ""; // Mostra tudo de volta se a busca estiver vazia
+        }
+    });
+
+    // 3. Exibição da mensagem de "Não encontrado"
+    if (encontrouAlgo || filter.length === 0) {
+        mensagemVazia.style.display = "none";
+        containerTabela.style.display = "block";
+    } else {
+        mensagemVazia.style.display = "block";
+        containerTabela.style.display = "none";
+    }
+}
